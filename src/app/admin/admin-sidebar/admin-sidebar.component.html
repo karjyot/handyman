@@ -1,0 +1,67 @@
+
+    <div class="sidebars" id="contain" style="height:100%">
+                <nav class="sidebar-nav">
+                  <ul class="nav" style="    padding-top: 54px;">
+                    <li class="nav-item" style="cursor: pointer;" (click) = "redirectUrl('dashboard')">
+                      <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'dashboard'}">
+                        <i class="nav-icon icon-speedometer"></i> Dashboard
+                     
+                      </a>
+                    </li>
+                  
+                    <li class="nav-item" (click) = "redirectUrl('users')" style="cursor: pointer;">
+                      <a class="nav-link "  [ngClass]="{'adminActive':selectedPage == 'users'}">
+                        <i class="nav-icon icon-user"></i> Users</a>
+                    </li>
+                    <li class="nav-item"  (click) = "redirectUrl('bookings')" style="cursor: pointer;">
+                      <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'bookings'}">
+                        <i class="nav-icon icon-note"></i> Bookings</a>
+                    </li>
+                    <li class="nav-item"  (click) = "redirectUrl('categories')" style="cursor: pointer;">
+                        <a class="nav-link" [ngClass]="{'adminActive':selectedPage == 'categories'}">
+                          <i class="nav-icon icon-grid"></i> Categories</a>
+                                    </li>
+                          <li class="nav-item"  (click) = "redirectUrl('postal-codes')" style="cursor: pointer;">
+                            <a class="nav-link" [ngClass]="{'adminActive':selectedPage == 'postal-codes'}">
+                              <i class="nav-icon icon-grid"></i> Postal Codes</a>
+                          </li>
+                         
+                      <li class="nav-item"  (click) = "redirectUrl('support-fee')" style="cursor: pointer;">
+                        <a class="nav-link" [ngClass]="{'adminActive':selectedPage == 'support-fee'}">
+                          <i class="nav-icon icon-grid"></i> Support Fee</a>
+                      </li>
+                     
+                        <li class="nav-item"  (click) = "redirectUrl('cms')" style="cursor: pointer;">
+                          <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'cms'}">
+                            <i class="nav-icon icon-people"></i> CMS</a>
+                        </li>
+                        <li class="nav-item"  (click) = "redirectUrl('terms')" style="cursor: pointer;">
+                          <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'terms'}">
+                            <i class="nav-icon icon-compass"></i> T & C</a>
+                        </li>
+                        <li class="nav-item"  (click) = "redirectUrl('privacy')" style="cursor: pointer;">
+                          <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'privacy'}">
+                            <i class="nav-icon icon-event"></i> Privacy Policy</a>
+                        </li>
+                        <li class="nav-item"  (click) = "redirectUrl('about')" style="cursor: pointer;">
+                          <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'about'}">
+                            <i class="nav-icon icon-share-alt"></i> About Us</a>
+                        </li>
+                        <li class="nav-item"  (click) = "redirectUrl('how-it-works')" style="cursor: pointer;">
+                          <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'how-it-works'}">
+                            <i class="nav-icon icon-share-alt"></i> How it works</a>
+                        </li>
+                        <li class="nav-item"  (click) = "redirectUrl('faqs')" style="cursor: pointer;">
+                          <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'faqs'}">
+                            <i class="nav-icon icon-share-alt"></i> Faqs</a>
+                        </li>
+                        <li class="nav-item"  (click) = "redirectUrl('learn-more')" style="cursor: pointer;">
+                          <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'learn-more'}">
+                            <i class="nav-icon icon-share-alt"></i> Learn More</a>
+                        </li>
+                  </ul>
+                </nav>
+               
+              </div>
+
+         

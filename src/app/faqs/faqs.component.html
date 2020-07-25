@@ -1,0 +1,129 @@
+
+<div class="banner services-page custom-service" *ngIf="faq" [style.background]="'url(' + faq.image + ')'">
+</div>
+
+<section class="faq-section">
+    <div class="container">
+      <!--Accordion wrapper-->
+      <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+        <!-- Accordion card -->
+          <div class="card">
+            <!-- Card header -->
+              <div class="card-header" role="tab" id="headingOne1">
+                  <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                aria-controls="collapseOne1">
+                  <h5 class="mb-0"  *ngIf="home">
+                    {{home.fq1}} <i class="fa fa-angle-down rotate-icon"></i>
+                  </h5>
+                </a>
+              </div>
+              <!-- Card body -->
+              <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
+              data-parent="#accordionEx">
+                <div class="card-body"  *ngIf="home">
+                  {{home.fq1Ans}}
+                </div>
+              </div>
+            </div>
+              <!-- Accordion card -->
+  
+              <!-- Accordion card -->
+              <div class="card">
+  
+                <!-- Card header -->
+                <div class="card-header" role="tab" id="headingTwo2">
+                  <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                    aria-expanded="false" aria-controls="collapseTwo2">
+                    <h5 class="mb-0"  *ngIf="home">
+                      {{home.fq2}}<i class="fa fa-angle-down rotate-icon"></i>
+                    </h5>
+                  </a>
+                </div>
+  
+                <!-- Card body -->
+                <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+                  data-parent="#accordionEx">
+                  <div class="card-body"  *ngIf="home">
+                    {{home.fq2Ans}}
+                  </div>
+                </div>
+  
+              </div>
+              <!-- Accordion card -->
+  
+                <!-- Accordion card -->
+                <div class="card"  *ngIf="home">
+  
+                  <!-- Card header -->
+                  <div class="card-header" role="tab" id="headingThree3">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
+                      aria-expanded="false" aria-controls="collapseThree3">
+                      <h5 class="mb-0">
+                        {{home.fq3}} <i class="fa fa-angle-down rotate-icon"></i>
+                      </h5>
+                    </a>
+                  </div>
+  
+                  <!-- Card body -->
+                  <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+                    data-parent="#accordionEx">
+                    <div class="card-body">
+                      {{home.fq3Ans}}
+                    </div>
+                  </div>
+                  
+  
+                </div>
+                <div class="card"  *ngIf="home">
+  
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingThree4">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree4"
+                        aria-expanded="false" aria-controls="collapseThree3">
+                        <h5 class="mb-0">
+                          {{home.fq4}} <i class="fa fa-angle-down rotate-icon"></i>
+                        </h5>
+                      </a>
+                    </div>
+    
+                    <!-- Card body -->
+                    <div id="collapseThree4" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+                      data-parent="#accordionEx">
+                      <div class="card-body">
+                        {{home.fq4Ans}}
+                      </div>
+                    </div>
+                    
+    
+                  </div>
+                  <div class="card"  *ngIf="home">
+  
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingThree5">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree5"
+                        aria-expanded="false" aria-controls="collapseThree3">
+                        <h5 class="mb-0">
+                          {{home.fq5}} <i class="fa fa-angle-down rotate-icon"></i>
+                        </h5>
+                      </a>
+                    </div>
+    
+                    <!-- Card body -->
+                    <div id="collapseThree5" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+                      data-parent="#accordionEx">
+                      <div class="card-body">
+                        {{home.fq5Ans}}
+                      </div>
+                    </div>
+                    
+    
+                  </div>
+                <!-- Accordion card -->
+  
+              </div>
+          <!-- Accordion wrapper -->
+		
+    </div>
+  </section>
+
+<div *ngIf="faq" [innerHTML]="faq.content"></div>

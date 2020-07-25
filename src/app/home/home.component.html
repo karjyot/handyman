@@ -1,0 +1,361 @@
+<div class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-12 col-xs-12">
+          <div class="caption-text">
+            <h1>Love your <span>home.</span></h1>
+            <p *ngIf="home" >{{home.upperHeader}}</p>
+          <form class="form-inline banner-form" method="post">
+            <div class="form-group">
+              <select class="form-control" name="category" (change) = "getSubCate()" [formControl] = "categoryContol">
+                <option value="all">All Categories</option>
+                <option value="{{data.id}}" *ngFor="let data of cate">{{data.name}}</option>
+               
+              </select>           
+            </div>
+                <div class="form-group">
+                    <input size="40" maxlength="30" class="form-control"  type="text" placeholder="Search services here.." [formControl]="stateCtrl"
+                    [matAutocomplete]="auto"> 
+                    <mat-autocomplete #auto="matAutocomplete">
+                    
+                      <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                      
+                        <span>{{state.name}}</span>
+                       
+                      </mat-option>
+                    </mat-autocomplete>     
+                </div>
+                <button class="btn btn-primary col-sm-2 pull-right" type="button" (click) = "search()"></button>
+            </form>
+            <div class="form-btm-imgs">
+              <div class="hexagon" (click)="gotoServices()"><img src="assets/images/electricity.png" class="img-fluid"><h6>Electronics</h6></div>
+              <div class="hexagon" (click)="gotoServices()"><img src="assets/images/sink-top.png" class="img-fluid"><h6>Plumbing</h6></div>
+              <div class="hexagon" (click)="gotoServices()"><img src="assets/images/clean.png" class="img-fluid"><h6>Home cleaning</h6></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---------------- Banner Section Bottom -------------->
+  <div class="easy-way-div">
+    <div class="container">
+      <div class="test">
+        <h2 class="main-title text-center"  *ngIf="home">{{home.about}}</h2>
+        <div class="row">
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="easy-block" (click)="gotoServices()">
+              <span class="easy-left">
+                <img src="assets/images/clean-easy.png" class="img-fluid">
+              </span>
+              <span class="easy-right" (click)="gotoServices()"><p>Home Cleaning</p></span>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="easy-block" (click)="gotoServices()">
+              <span class="easy-left">
+                <img src="assets/images/customer-support.png" class="img-fluid">
+              </span>
+              <span class="easy-right" (click)="gotoServices()"><p>All Services</p></span>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="easy-block" (click)="gotoServices()">
+              <span class="easy-left">
+                <img src="assets/images/shopping-cart-of-checkered-design.png" class="img-fluid">
+              </span>
+              <span class="easy-right" (click)="gotoServices()"><p>The Home Shop</p></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---------------- All categories Section -------------->
+  <div class="all-categories">
+    <div class="container pd-section">
+      <h3 class="heading">All categories</h3>
+        <ul class="row cat-list">
+          <li class="col-xs-12 col-sm-6 col-md-4" *ngFor="let data of cate">
+            <div class="inner-content">
+              <a href="javascript:true" (click)="handymanService(data.id)"><img src="{{data.image}}" class="img-fluid"><span>{{data.name}}</span></a>
+            </div>
+          </li>
+          <!-- <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="inner-content">
+              <a href=""><img src="assets/images/assembly.png" class="img-fluid"><span>Assembly</span></a>
+            </div>
+          </li>
+          <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="inner-content">
+              <a href=""><img src="assets/images/technician-home.png" class="img-fluid"><span>General Handyman</span></a>
+            </div>
+          </li>
+          <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="inner-content">
+              <a href=""><img src="assets/images/sink-home.png" class="img-fluid"><span>Plumbing</span></a>
+            </div>
+          </li>
+          <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="inner-content">
+              <a href=""><img src="assets/images/electricity-home.png" class="img-fluid"><span>Electrical</span></a>
+            </div>
+          </li>
+          <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="inner-content">
+              <a href=""><img src="assets/images/painting-hm.png" class="img-fluid"><span>Painting</span></a>
+            </div>
+          </li>
+          <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="inner-content">
+              <a href=""><img src="assets/images/move-home.png" class="img-fluid"><span>Moving</span></a>
+            </div>
+          </li>
+          <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="inner-content">
+              <a href=""><img src="assets/images/smart-watch.png" class="img-fluid"><span>Smart Home</span></a>
+            </div>
+          </li>
+          <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="inner-content">
+              <a href=""><img src="assets/images/window-home.png" class="img-fluid"><span>Window Treatments</span></a>
+            </div>
+          </li>
+          <li class="col-xs-12 col-sm-6 col-md-4">
+            <div class="inner-content">
+              <a href=""><img src="assets/images/paint-home.png " class="img-fluid"><span>Home Improvement Projects</span></a>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    <div class="category-btm-form">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-10">
+            <form class="form-inline">
+              <div class="form-group">
+                <label for="inputPassword6">Need something else?</label>
+                    <input type="text"class="form-control"  [formControl]="stateCtrl"
+                    [matAutocomplete]="auto1" placeholder="handyman, electrition,plumber etc...">
+                    <mat-autocomplete #auto1="matAutocomplete">
+                    
+                      <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                      
+                        <span>{{state.name}}</span>
+                       
+                      </mat-option>
+                    </mat-autocomplete>  
+                      <button type="submit" class="btn btn-primary" (click) = "searchLower()">Submit</button>
+                    </div>
+            </form>
+          </div>	    					
+        </div>
+        <p class="text-center"  *ngIf="home">{{home.how}}</p>
+      </div>
+    </div>
+    </div>
+  <!---------------- Call Section -------------->
+  <section class="call-section">
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-sm-12 col-xs-12 text-center">
+          <div class="call-img">
+            <img src="assets/images/lehighval.png" class="img-fluid">
+            <span class="call-phone"><img src="assets/images/call-answer.png" class="img-fluid"></span> 
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12 text-sm-center">
+          <div class="call-text"><p>Call <b  *ngIf="home">{{home.contact}}</b> for free</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </section>
+  <!---------------- FAQ Section -------------->
+  <section class="faq-section">
+    <div class="container">
+      <!--Accordion wrapper-->
+      <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+        <!-- Accordion card -->
+          <div class="card">
+            <!-- Card header -->
+              <div class="card-header" role="tab" id="headingOne1">
+                  <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                aria-controls="collapseOne1">
+                  <h5 class="mb-0"  *ngIf="home">
+                    {{home.fq1}} <i class="fa fa-angle-down rotate-icon"></i>
+                  </h5>
+                </a>
+              </div>
+              <!-- Card body -->
+              <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
+              data-parent="#accordionEx">
+                <div class="card-body"  *ngIf="home">
+                  {{home.fq1Ans}}
+                </div>
+              </div>
+            </div>
+              <!-- Accordion card -->
+  
+              <!-- Accordion card -->
+              <div class="card">
+  
+                <!-- Card header -->
+                <div class="card-header" role="tab" id="headingTwo2">
+                  <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                    aria-expanded="false" aria-controls="collapseTwo2">
+                    <h5 class="mb-0"  *ngIf="home">
+                      {{home.fq2}}<i class="fa fa-angle-down rotate-icon"></i>
+                    </h5>
+                  </a>
+                </div>
+  
+                <!-- Card body -->
+                <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+                  data-parent="#accordionEx">
+                  <div class="card-body"  *ngIf="home">
+                    {{home.fq2Ans}}
+                  </div>
+                </div>
+  
+              </div>
+              <!-- Accordion card -->
+  
+                <!-- Accordion card -->
+                <div class="card"  *ngIf="home">
+  
+                  <!-- Card header -->
+                  <div class="card-header" role="tab" id="headingThree3">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
+                      aria-expanded="false" aria-controls="collapseThree3">
+                      <h5 class="mb-0">
+                        {{home.fq3}} <i class="fa fa-angle-down rotate-icon"></i>
+                      </h5>
+                    </a>
+                  </div>
+  
+                  <!-- Card body -->
+                  <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+                    data-parent="#accordionEx">
+                    <div class="card-body">
+                      {{home.fq3Ans}}
+                    </div>
+                  </div>
+  
+                </div>
+                <!-- Accordion card -->
+  
+              </div>
+          <!-- Accordion wrapper -->
+    <div class="row justify-content-center">
+      <a href="#" routerLink= "/services" class="get-started-btn">Get started</a>
+    </div>			
+    </div>
+  </section>
+  <section class="how-it-works-section">
+  <div class="container">
+  <h2 class="main-title text-center mb-3">How it works</h2>
+  <div class="row">
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <div class="work-div">
+      <div class="number"><h5>1</h5></div>
+      <h3>Tell us what you need</h3>
+      <p  *ngIf="home">{{home.signin}}</p>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <div class="work-div">
+      <div class="number"><h5>2</h5></div>
+      <h3>We will get the job done, or match you with a pro that can</h3>
+      <p  *ngIf="home">{{home.choose}}</p>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <div class="work-div">
+      <div class="number"><h5>3</h5></div>
+      <h3>We’re here when you need us</h3>
+      <p  *ngIf="home">{{home.submit}}</p>
+    </div>
+  </div>
+  </div>
+  </div>
+  </section>
+  
+  <!---------------- Start a project -------------->
+  <div class="start-proj-div">
+    <div class="container">
+      <div class="test">
+        <h2 class="main-title text-center text-white">Start a project today</h2>
+        <p class="text-center text-white">It's fast, easy, and hassle-free!</p>
+        <div class="row justify-content-center">
+          <div class="col-sm-12 col-md-6">
+            <form class="form-inline start-proj">
+              <div class="form-group">									
+                    <input type="text" class="form-control" placeholder="handyman, electrition,plumber etc..."[formControl]="stateCtrl"
+                    [matAutocomplete]="auto2" placeholder="handyman, electrition,plumber etc...">
+                    <mat-autocomplete #auto2="matAutocomplete">
+                    
+                      <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                      
+                        <span>{{state.name}}</span>
+                       
+                      </mat-option>
+                    </mat-autocomplete>  
+                      <button type="button" class="btn btn-primary" (click) = "searchLower()">Search</button>
+                    </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---------------- tasks section -------------->
+  <section class="tasks-section">
+  <div class="container">
+  <!-- <h2 class="main-title mb-4">Cleaning & Handyman Tasks</h2> -->
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" *ngFor="let sub of subCate | slice:0:4">
+      <div class="task-div"  (click) = "searchSingle(sub.name)" style="cursor: pointer;">
+        <div class="task-img">
+          <img src="{{sub.image}}" class="img-fluid">
+        </div>
+        <p>{{sub.name}}</p>
+      </div>
+    </div>
+    <!-- <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+      <div class="task-div">
+        <div class="task-img">
+          <img src="assets/images/furniture.png" class="img-fluid">
+        </div>
+        <p>furniture assembly</p>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+      <div class="task-div">
+        <div class="task-img">
+          <img src="assets/images/tv-mounting.png" class="img-fluid">
+        </div>
+        <p>TV mounting</p>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+      <div class="task-div">
+        <div class="task-img">
+          <img src="assets/images/wall-hanging.png" class="img-fluid">
+        </div>
+        <p>wall hanging</p>
+      </div>
+    </div> -->
+  </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="tasks-btm">
+          <h2 *ngIf="home">{{home.dd4}}</h2>
+          <p *ngIf="home">{{home.dd5}}</p>
+          <a href="#" routerLink = "/pro" class="get-started-btn">Become a Pro</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  </section>

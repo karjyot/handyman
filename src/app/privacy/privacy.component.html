@@ -1,0 +1,10 @@
+<div class="banner services-page custom-service" *ngIf="privacy" [style.background]="'url(' + privacy.image + ')'">
+</div>
+
+<div class="inner-page-content">
+    <div class="container">
+        <div  *ngIf="privacy" [innerHTML]="privacy.content"></div>
+    </div>
+</div>
+
+

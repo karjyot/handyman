@@ -1,0 +1,103 @@
+@media (max-width: 1199px) { 
+.content-main{
+		padding: 10px 0px!important;
+	}
+	.bookingForm { background: #fff; max-width: 100%; margin-left: 0px; margin-bottom: 50px;}
+	.main-content {padding: 0px 15px;}
+	.form-wrapper.login_wrapper a i {
+		padding-left: 10px;
+	}
+}
+@media (max-width: 991px) {
+.call-section {
+	height: auto;
+	background-position: center center;
+	width: 100%;
+	max-width: 100%;padding: 56px 0px;
+}
+.banner.services .caption-text{width: 100%;float: left;background-color: transparent;}
+.caption-text {padding: 0;}
+.banner{height: auto;}
+.caption-text h1 {font-size: 30px;font-weight: 600; line-height: 40px;margin-top: 20px;}
+.category-btm-form input.form-control{width: auto;margin-left: 0px;}
+.category-btm-form .form-inline label{margin-right: 20px;}
+.work-div h3 {font-size: 16px;margin-bottom: 10px;}
+.work-div{min-height: auto;}
+.work-div p {font-size: 14px;}
+.start-proj input.form-control{margin-left: 0px !important;}
+.form-inline.start-proj{justify-content: center;}
+.task-img img {width: 100%; height: 220px;object-fit: cover;}
+.task-div {display: block;width: 100%;}
+.page-footer .addr {width: auto;}
+#sub-footer .sub-footer-left,#sub-footer .sub-footer-right{text-align: center;}
+.service-tv-elec, .service-assembly, .service-gen-handyman, .service-plumbing, .service-elec, .service-painting, .service-moving, .service-smart-home, .service-window-treat, .service-imp-proj{padding:0px;}
+.banner.services {height: 500px;}
+nav.navbar{display: flex;}
+.banner.services-page{height: 250px;}
+.booking-form-sidebar{margin-bottom: 40px;}
+.form-expiration{display: block;}
+.exp_month{ width: 80px;}
+.month-slash{display: block;}
+.month-slash:after { left: 73px;}
+.exp_year{width: 75px;}
+.navbar-expand-sm .navbar-nav .nav-link {padding-right:0px;}
+}
+@media (max-width: 767px) { 
+form.form-inline.start-proj button {text-align: center;margin: 0 auto;display: block;}
+.main-title {font-size: 24px;}
+.start-proj input.form-control{width: auto;border: none;}
+.call-text {text-align: center; margin-top: 20px;}
+.category-btm-form .form-inline,.form-inline.start-proj,.form-inline.banner-form{width: 100%;display: block;float: left;}
+.category-btm-form input.form-control, .form-inline.start-proj input,.form-inline.banner-form input{width: 100% !important;}
+.category-btm-form .btn.btn-primary, .form-inline.start-proj .btn.btn-primary,.banner-form button.btn.btn-primary{display: block;text-align: center;margin: 10px auto;}
+.form-btm-imgs{display: block;}
+.form-inline.banner-form select{width: 100%;margin-bottom: 10px;}
+.banner-form button.btn.btn-primary{width: 100%;}
+.caption-text {background: rgba(255,255,255,0.8);padding: 10px;}
+.banner{background-position: 50% 50%;}
+/*.service-assembly img{margin-bottom: 20px;}*/
+.service-tv-elec img, .service-assembly img, .service-gen-handyman img, .service-plumbing img, .service-elec img, .service-painting img, .service-moving img, .service-smart-home img, .service-window-treatimg, .service-imp-proj img{margin-bottom: 20px;}
+.service-form{margin-bottom: 20px;}
+ul.list-footer li a, ul.list-footer li{list-style: none;}
+nav.navbar{padding: 15px 0px;}
+.banner-form button.btn.btn-primary{    max-width: 100%;border-radius: 3px;}
+.banner.services-page{height: 230px;}
+.col-xl-9.col-lg-8.order-lg-12 img {
+    width: 100%;
+    max-width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+.form-wrapper.login_wrapper a i {
+	padding-left: 10px;
+}
+}
+@media (max-width: 575px) { 
+#sub-footer ul li{display: block;margin:10px 0px;}
+/*nav.navbar{display: inline;}*/
+.navbar-nav .nav-item{margin: 10px 0px;background: aliceblue;padding: 0px 15px;}
+.tour-list-area .row.service-list{padding: 15px;}
+.navbar-nav .nav-item:hover{background-color: #30d8ee;}
+.user-right {margin-top: 15px;}
+}
+
+@media (min-width: 1200px){
+	.container {
+	    max-width: 1196px !important;
+	    margin: 0 auto;
+	}
+
+}
+
+@media (min-width: 576px){
+	.navbar-expand-sm .navbar-collapse{justify-content: space-between;}
+}
+
+
+
+
+
+
+
+
+

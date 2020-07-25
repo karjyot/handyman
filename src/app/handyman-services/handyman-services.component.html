@@ -1,0 +1,435 @@
+<div class="banner services">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-10">
+                <div class="caption-text text-white">
+                    <h1>Choose a <span>service</span> to get started.</h1>
+                    <p class="text-white">For moving and improving and everything in between.</p>
+                    <form class="form-inline banner-form" method="post">
+                        <div class="form-group">
+                            <select class="form-control" name="category" (change) = "getSubCate()" [formControl] = "categoryContol">
+                                <option value="all">All Categories</option>
+                                <option value="{{data.id}}" *ngFor="let data of categories">{{data.name}}</option>
+                               
+                              </select>             
+                        </div>
+                        <div class="form-group col-sm-6 no-gutters">
+                            <input size="40" maxlength="30" class="form-control"  type="text" placeholder="Search services here.." [formControl]="stateCtrl"
+                    [matAutocomplete]="auto"> 
+                            <mat-autocomplete #auto="matAutocomplete">
+                    
+                                <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                                
+                                  <span>{{state.name}}</span>
+                                 
+                                </mat-option>
+                              </mat-autocomplete>             
+                        </div>
+                        <button class="btn btn-primary col-sm-2 pull-right"  (click) = "search()" type="submit"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---------------- Banner Section Bottom -------------->
+<div class="tour-list-area pd-40">
+    <div class="container">
+        <h3 class="heading">Main categories</h3>
+        <div class="row">
+            <div class="col-xl-3 col-lg-4">
+                <div class="sidebar-area">
+                <ul class="row service-list">
+                <li *ngFor="let allCat of categories">
+                    <div class="inner-content">
+                        <a href="javascript:void(0)" (click)="scroll(allCat.id)"><img src="{{allCat.image}}" class="img-fluid"><span>{{allCat.name}}</span></a>
+                    </div>
+                </li>
+                <!-- <li>
+                    <div class="inner-content">
+                        <a href=""><img src="assets/images/assembly.png" class="img-fluid"><span>Assembly</span></a>
+                    </div>
+                </li>
+                <li class="col-xs-12">
+                    <div class="inner-content">
+                        <a href=""><img src="assets/images/technician-home.png" class="img-fluid"><span>General Handyman</span></a>
+                    </div>
+                </li>
+                <li class="col-xs-12">
+                    <div class="inner-content">
+                        <a href=""><img src="assets/images/sink-home.png" class="img-fluid"><span>Plumbing</span></a>
+                    </div>
+                </li>
+                <li class="col-xs-12">
+                    <div class="inner-content">
+                        <a href=""><img src="assets/images/electricity-home.png" class="img-fluid"><span>Electrical</span></a>
+                    </div>
+                </li>
+                <li class="col-xs-12">
+                    <div class="inner-content">
+                        <a href=""><img src="assets/images/painting-hm.png" class="img-fluid"><span>Painting</span></a>
+                    </div>
+                </li>
+                <li class="col-xs-12">
+                    <div class="inner-content">
+                        <a href=""><img src="assets/images/move-home.png" class="img-fluid"><span>Moving</span></a>
+                    </div>
+                </li>
+                <li class="col-xs-12">
+                    <div class="inner-content">
+                        <a href=""><img src="assets/images/smart-watch.png" class="img-fluid"><span>Smart Home</span></a>
+                    </div>
+                </li>
+                <li class="col-xs-12">
+                    <div class="inner-content">
+                        <a href=""><img src="assets/images/window-home.png" class="img-fluid"><span>Window Treatments</span></a>
+                    </div>
+                </li>
+                <li class="col-xs-12">
+                    <div class="inner-content">
+                        <a href=""><img src="assets/images/paint-home.png " class="img-fluid"><span>Home Improvement Projects</span></a>
+                    </div>
+                </li> -->
+            </ul>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 order-lg-12" >
+                <div id="{{allCat.id}}" class="service-tv-elec" *ngFor="let allCat of categories">
+                <h3  class="service-title">{{allCat.name}}</h3>                		
+                    <div class="row ">	                			
+                        <div class="col-md-5 col-sm-12">
+                            <ul>
+                  
+                                <li style="cursor: pointer;" (click) = "searchLower(subCat.name)" *ngFor="let subCat of allCat.sub">{{subCat.name}}</li>
+                                <!-- <li>Soundbar Installation</li>
+                                <li>TV Installation</li>
+                                <li>Home Theater AV Setup</li>
+                                <li>TV Wall Mount Installation</li>
+                                <li>TV Mounting</li> -->
+                            </ul>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <img src="{{allCat.main_image}}" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="service-assembly" >
+                    <h3 class="service-title pb-1 my-md-1 my-sm-3">Assembly</h3>                		
+                    <div class="row align-items-center">	                			
+                        <div class="col-md-6 col-sm-12">
+                            <img src="assets/images/assembly-1.png" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <img src="assets/images/assembly-2.png" class="img-fluid float-md-right float-sm-12">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Office Furniture Assembly</li>
+                                <li>Outdoor Furniture Assembly</li>
+                                <li>Bed Assembly</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Office Furniture Assembly</li>
+                                <li>Outdoor Furniture Assembly</li>
+                                <li>Bed Assembly</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Office Furniture Assembly</li>
+                                <li>Outdoor Furniture Assembly</li>
+                                <li>Bed Assembly</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+
+
+                <!-- <div class="service-gen-handyman">
+                    <h3 class="service-title pb-1">General Handyman</h3>                		
+                    <div class="row align-items-center">	                			
+                        <div class="col-md-4 col-sm-12">
+                            <img src="assets/images/handyman-1.png" class="img-fluid">
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <img src="assets/images/handyman-2.png" class="img-fluid float-md-right float-sm-12">
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <img src="assets/images/handyman-3.png" class="img-fluid float-md-right float-sm-12">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Air Conditioner Installation</li>
+                                <li>Air Conditioner Uninstall</li>
+                                <li>Carpentry & Repairs</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Furniture Assembly</li>
+                                <li>Handy Helper</li>
+                                <li>Home Repair Services</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Interior Painting</li>
+                                <li>Knobs Installation</li>
+                                <li>Locks Installation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="service-plumbing">
+                    <h3 class="service-title pb-1">Plumbing</h3>                		
+                    <div class="row align-items-center">	                			
+                        <div class="col-md-6 col-sm-12">
+                            <img src="assets/images/plumbing-1.png" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <img src="assets/images/plumbing-2.png" class="img-fluid float-md-right float-sm-12">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Office Furniture Assembly</li>
+                                <li>Outdoor Furniture Assembly</li>
+                                <li>Bed Assembly</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Office Furniture Assembly</li>
+                                <li>Outdoor Furniture Assembly</li>
+                                <li>Bed Assembly</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Office Furniture Assembly</li>
+                                <li>Outdoor Furniture Assembly</li>
+                                <li>Bed Assembly</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="service-elec">
+                <h3 class="service-title">Electrical</h3>                		
+                    <div class="row align-items-center">	                			
+                        <div class="col-md-5 col-sm-12">
+                            <ul>
+                                <li>Ceiling & Bath Fans</li>
+                                <li>Garbage Disposal</li>
+                                <li>Light Switch Installation</li>
+                                <li>Smart Security Cam Installation</li>
+                                <li>Smart Thermostat Installation</li>
+                                <li>Outlet Installation</li>
+                                <li>Light Fixtures</li>
+                                <li>Electrical Service</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <img src="assets/images/electrical.png" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="service-painting">
+                <h3 class="service-title">Painting</h3>                		
+                    <div class="row align-items-center">	                			
+                        <div class="col-md-5 col-sm-12">
+                            <ul>
+                                <li>Baseboard Painting</li>
+                                <li>Crown Molding Painting</li>
+                                <li>Door Painting</li>
+                                <li>Doorframe Painting</li>
+                                <li>House Painting</li>
+                                <li>Wall Painting</li>
+                                <li>Interior Painting</li>
+                                <li>Bedroom Painting</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <img src="assets/images/painting.png" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="service-moving">
+                    <h3 class="service-title pb-1">Moving</h3>                		
+                    <div class="row align-items-center">	                			
+                        <div class="col-md-4 col-sm-12">
+                            <img src="assets/images/moving-1.png" class="img-fluid">
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <img src="assets/images/moving-2.png" class="img-fluid float-md-right float-sm-12">
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <img src="assets/images/moving-3.png" class="img-fluid float-md-right float-sm-12">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Interior Painting</li>
+                                <li>Knobs Installation</li>
+                                <li>Light Fixtures</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Move In Cleaning</li>
+                                <li>Move Out Cleaning</li>
+                                <li>Storage</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Window Treatments</li>
+                                <li>Moving Help</li>
+                                <li>TV Mounting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="service-smart-home">
+                    <h3 class="service-title">Smart Home</h3>                		
+                    <div class="row align-items-center">	                			
+                        <div class="col-md-4 col-sm-12">
+                            <img src="assets/images/smarthome-1.png" class="img-fluid">
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <img src="assets/images/smarthome-2.png" class="img-fluid float-md-right float-sm-12">
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <img src="assets/images/smarthome-3.png" class="img-fluid float-md-right float-sm-12">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Smart Lock Installation</li>
+                                <li>Smart Thermostat Installation</li>
+                                <li>Video Doorbell Installation</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Wi-Fi Router Setup</li>
+                                <li>Smart Home Hub Setup</li>
+                                <li>Smart Security Cam Installation</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Smart Device Installation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="service-window-treat">
+                <h3 class="service-title">Window treatment</h3>                		
+                    <div class="row align-items-center">	                			
+                        <div class="col-md-5 col-sm-12">
+                            <ul>
+                                <li>Window Blind Installation</li>
+                                <li>Window Curtain Installation</li>
+                                <li>Window Treatments</li>
+                                <li>Window Drapery Installation</li>
+                                <li>Window Shade Installation</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <img src="assets/images/window-treatment.png" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="service-imp-proj">
+                    <h3 class="service-title pb-1">Plumbing</h3>                		
+                    <div class="row align-items-center">	                			
+                        <div class="col-md-6 col-sm-12">
+                            <img src="assets/images/improve-1.png" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <img src="assets/images/improve-2.png" class="img-fluid float-md-right float-sm-12">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>3 to 5 Windows Installation</li>
+                                <li>6+ Windows Installation</li>
+                                <li>Adding an Addition to your Home</li>
+                                <li>Ceramic Tile Installation</li>
+                                <li>Chimney Cleaning</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Alarm System Installation</li>
+                                <li>Appliance Repair</li>
+                                <li>Basement Remodeling</li>
+                                <li>Ceramic Tile Repair</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <ul>
+                                <li>Blown In Insulation Installation</li>
+                                <li>Cabinets Refinishing</li>
+                                <li>Carpet Installation</li>
+                                <li>Central A/C Repair</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!---------------- All categories Section -------------->
+
+<!---------------- Call Section -------------->
+
+<!---------------- FAQ Section -------------->
+
+
+<!---------------- Start a project -------------->
+<div class="start-proj-div">
+    <div class="container">
+        <div class="test">
+            <h2 class="main-title text-center text-white">Start a project today</h2>
+            <p class="text-center text-white">It's fast, easy, and hassle-free!</p>
+            <div class="row ">
+                <div class="col-12 col-md-6 mx-auto">
+                    <form class="form-inline start-proj">
+                        <div class="form-group">									
+                                <input type="text" class="form-control" placeholder="handyman, electrition,plumber etc...">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

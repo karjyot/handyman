@@ -1,0 +1,54 @@
+<section class="login-from bg-form pt-4">
+    <div class="container">
+        
+        <div class="row mt-5 pb-3">
+            
+            <div class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                
+                <div class="form-wrapper login_wrapper">
+                    <!-- <div class="booking-header">
+                        <h4>Login</h4>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6"> <a href="javascript::" (click)="socialLogin('facebook')" class="btn btn-primary facebook"> <span>Login with Facebook</span> <i class="fa fa-facebook"></i> </a> </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6"> <a href="javascript::" (click)="socialLogin('google')" class="btn btn-primary google-plus"> Login with Google <i class="fa fa-google-plus"></i> </a> </div>
+                    </div>
+
+                   <p class="text-center">- OR -</p>
+              
+                    <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="login()">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="email" class="form-control"    placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" formControlName="email" required>
+                            </div>
+                        </div>                                   
+                        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="password"  class="form-control"  placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password" required>
+                            </div>
+                        </div> 
+                        <div class="col-md-6 col-sm-12">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"  formControlName = "rememberme"  name="remember"> Remember Me
+                                </label>
+                            </div>
+                        </div> 
+                        <div class="col-md-6 col-sm-12 forget-pswrd">
+                            <label><a routerLink = "/forget-password">Forget Password</a></label>
+                        </div>                     
+                    </div>
+                    <div class="text-center">
+                        <button class="btn-cstm btn-blue">Login</button>
+                    </div>
+                     
+                                      
+                    </form>
+                </div>
+                </div>
+        </div>      
+    </div>
+</section>
+

@@ -1,0 +1,521 @@
+<div class="banner services-page custom-service" *ngIf="subCategoryDetails" [style.background]="'url(' + subCategoryDetails.main_image + ')'">
+</div>
+<!---------------- Banner Section Bottom -------------->
+<div class="services-page-list-area pd-40" *ngIf="subCategoryDetails">
+    <div class="container">
+        <div class="row">	            	
+            <div class="col-xl-8 col-lg-7">
+                <div class="main-content">
+                    <h2 class="main-title">{{subCategoryDetails.name}}</h2>
+                    <!--<div class="rating">
+                        <div class="star-rating">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        <div class="rating-num"><span>(247)</span></div>
+                    </div>-->
+                        <div class="content-main">
+                            <p> {{subCategoryDetails.about}}</p>
+                            <ul class="list">
+                                <li *ngIf = "subCategoryDetails.feature1">{{subCategoryDetails.feature1}}</li>
+                                <li *ngIf = "subCategoryDetails.feature2">{{subCategoryDetails.feature2}} </li>
+                                <li *ngIf = "subCategoryDetails.feature3">{{subCategoryDetails.feature3}}</li>
+                                <li *ngIf = "subCategoryDetails.feature4">{{subCategoryDetails.feature4}}</li>
+                                <li *ngIf = "subCategoryDetails.feature5">{{subCategoryDetails.feature5}}</li>
+                                <li *ngIf = "subCategoryDetails.feature6">{{subCategoryDetails.feature6}}</li>
+                            </ul>
+                        </div>
+                    </div>		                	
+                </div>
+                   <div class="col-xl-4 col-lg-5">
+                <div class="sidebar-area">
+                      <div class="service-form">
+                          <!-- Default form contact -->
+                            <form  [formGroup]="bookingForm" autocomplete="off" novalidate (ngSubmit)="book(confirm)">	
+                   <p class="h4 mb-4">{{subCategoryDetails.name}}</p>
+                <!-- Name -->
+                <input (change)="validatePinCode()" type="text" class="form-control" placeholder="ZIP code" [ngClass]="{ 'is-invalid': submitted && f.zip.errors }" OnlyNumber="true" maxlength="8" formControlName="zip" required>    
+                <div *ngIf="submitted && f.zip.errors" class="invalid-feedback">
+                    <div *ngIf="f.zip.errors.required">Please enter the valid zip</div>
+                    <div *ngIf="!f.zip.errors.required">we are sorry we currently don't provide service in this area</div>
+                </div>
+
+                       <p class="h6 mb-2 text-center">Tell us about the job</p>
+                       <!-- Message -->
+                    <div class="form-group">
+                        <textarea class="form-control rounded-2" [ngClass]="{ 'is-invalid': submitted && f.about.errors }" formControlName="about" rows="3" placeholder="Please describe the job in detail (required)"></textarea>
+                        <div *ngIf="submitted && f.about.errors" class="invalid-feedback">
+                            <div *ngIf="f.about.errors.required">Please enter the job description</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Subject -->
+                    <p class="h6 mb-2 text-center">How many hours would you like to book?</p>
+                    <select class="browser-default custom-select mb-4" formControlName="hours" >
+                        <option value="2">2 hours</option>
+                        <option value="3">3 hours</option>
+                        <option value="4">4 hours</option>
+                    </select>
+
+                    <!-- Subject -->
+                    <p class="h6 mb-2 text-center">When would you like us to come?</p>
+                    <input type="text" class="form-control mb-2" [ngClass]="{ 'is-invalid': submitted && f.date.errors }" [min]="min"  [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" formControlName="date" required placeholder="Sat Jun 20">
+                    <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                        <div *ngIf="f.date.errors.required">Please enter the valid date</div>
+                    </div>
+                    <select class="browser-default custom-select mb-2" formControlName="time">
+                        <option value="{{x}}" *ngFor="let x of times">{{x}}</option>
+                        <!-- <option value="4:00PM">4:00PM</option>
+                        <option value="5:00PM">5:00PM</option> -->
+                    </select>
+
+                    <!-- Email -->
+                    <input type="email" id="defaultContactFormEmail" class="form-control mb-2" placeholder="Email Address" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" formControlName="email" required>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Please enter the valid email</div>
+                    </div>
+
+                    <!-- phone -->
+                    <!-- <input type="email" formControlName="phone"  id="defaultContactFormEmail" class="form-control mb-2" placeholder="Phone Number(Optional)"> -->
+                    <!-- Send button -->
+                    <button class="btn btn-info btn-block" type="submit">get a price</button>
+
+                </form>
+                      </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <section class="how-it-works-section" *ngIf="home">
+            <div class="container">
+                <h2 class="main-title text-center mb-4">How it works</h2>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="work-div">
+                            <div class="number"><img src="assets/images/calendar.png" class="img-fluid"></div>
+                            <h3>Pick a Time</h3>
+                            <p>{{home.pickTime}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="work-div">
+                            <div class="number"><img src="assets/images/booking.png" class="img-fluid"></div>
+                            <h3>Book instantly</h3>
+                            <p>{{home.bookInstatnly}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="work-div">
+                            <div class="number"><img src="assets/images/repair.png" class="img-fluid"></div>
+                            <h3>Your pro arrives</h3>
+                            <p>{{home.proArrives}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="trusted-section" *ngIf="home">
+            <div class="container">
+                <h2 class="main-title text-center mb-4">The Trusted Name in Handyman Service</h2>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="trusted-div">
+                            <div class="trusted-img"><img src="assets/images/experience.png" class="img-fluid"></div>
+                            <div>
+                                <h3>Pick a Time</h3>
+                                <p>{{home.pickTimeLower}}</p>
+                            </div>									
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="trusted-div">
+                            <div class="trusted-img"><img src="assets/images/technician.png" class="img-fluid"></div>
+                            <div>
+                                <h3>Skilled and Capable</h3>
+                                <p>{{home.skilled}}</p>
+                            </div>									
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="trusted-div">
+                            <div class="trusted-img"><img src="assets/images/trust.png" class="img-fluid"></div>
+                            <div>
+                                <h3>Reliable</h3>
+                                <p>{{home.reliable}}</p>
+                            </div>									
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="trusted-div">
+                            <div class="trusted-img"><img src="assets/images/flexibility.png" class="img-fluid"></div>
+                            <div>
+                                <h3>Flexible</h3>
+                                <p>{{home.flexible}}</p>
+                            </div>									
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- <section class="best-handmyan-section"  *ngIf="home">
+            <div class="container">
+                <h2 class="main-title text-center mb-4">The Best Handyman Service</h2>
+                <div class="bst-handyman-block">
+                    <div class="row align-items-center">
+                    <div class="col-sm-8 col-xs-12">
+                        <div class="best-handmyan-div-left text-div hdng">
+                            <h3 class="mb-3">{{home.lowrTitle1}}</h3>
+                            <p>{{home.text1}}</p>									
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="best-handmyan-div-right">
+                            <div class="best-handmyan-img"><img src="assets/images/man-hold-wood-planer.png" class="img-fluid"></div>	
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bst-handyman-block">
+                    <div class="row align-items-center">
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="best-handmyan-div-left">
+                            <div class="best-handmyan-img"><img src="assets/images/background-blank-business-craft.png" class="img-fluid"></div>															
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-xs-12">
+                        <div class="best-handmyan-div-right text-div hdng">	
+                            <h3 class="mb-3">{{home.lowrTitle2}}</h3>
+                            <p>{{home.text2}}</p>				
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bst-handyman-block">
+                    <div class="row align-items-center">
+                    <div class="col-sm-8 col-xs-12">
+                        <div class="best-handmyan-div-left text-div hdng">
+                            <h3 class="mb-3">{{home.lowrTitle3}}</h3>
+                            <p>{{home.text3}}</p>												
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="best-handmyan-div-right">
+                            <div class="best-handmyan-img"><img src="assets/images/time-precious.png" class="img-fluid"></div>	
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </section> -->
+
+<!---------------- FAQ Section -------------->
+<section class="faq-section">
+    <div class="container">
+        <!--Accordion wrapper-->
+            <div *ngIf="home" class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                <!-- Accordion card -->
+                    <div class="card">
+                        <!-- Card header -->
+                            <div class="card-header" role="tab" id="headingOne1">
+                                    <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                                aria-controls="collapseOne1">
+                                    <h5 class="mb-0">
+                                 {{home.fq1}} <i class="fa fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
+                            data-parent="#accordionEx">
+                                <div class="card-body">
+                                    {{home.fq1Ans}}
+                                </div>
+                            </div>
+                        </div>
+                            <!-- Accordion card -->
+
+                          <!-- Accordion card -->
+                          <div class="card">
+
+                            <!-- Card header -->
+                            <div class="card-header" role="tab" id="headingTwo2">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                                aria-expanded="false" aria-controls="collapseTwo2">
+                                <h5 class="mb-0">
+                                    {{home.fq2}}<i class="fa fa-angle-down rotate-icon"></i>
+                                </h5>
+                              </a>
+                            </div>
+
+                            <!-- Card body -->
+                            <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+                              data-parent="#accordionEx">
+                              <div class="card-body">
+                                {{home.fq2Ans}}
+                              </div>
+                            </div>
+
+                          </div>
+                          <!-- Accordion card -->
+
+                              <!-- Accordion card -->
+                              <div class="card">
+
+                                <!-- Card header -->
+                                <div class="card-header" role="tab" id="headingThree3">
+                                  <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
+                                    aria-expanded="false" aria-controls="collapseThree3">
+                                    <h5 class="mb-0">
+                                        {{home.fq3}} <i class="fa fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                  </a>
+                                </div>
+
+                                <!-- Card body -->
+                                <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+                                  data-parent="#accordionEx">
+                                  <div class="card-body">
+                                    {{home.fq3Ans}}
+                                  </div>
+                                </div>
+
+                              </div>
+                              <!-- Accordion card -->
+
+                            </div>
+                    <!-- Accordion wrapper -->
+        <div class="row justify-content-center">
+            <a href="" class="get-started-btn">Get started</a>
+        </div>			
+    </div>
+</section>
+
+
+    <!--<section class="professionals-section text-center">
+            <div class="container">
+                <h2 class="main-title text-center mb-4">Meet Some of Our Top Handyman Service Professionals</h2>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="professionals-div">
+                            <div class="professionals-img"><img src="assets/images/prof-1.png" class="img-fluid"></div>
+                            <h3>John Rooster</h3>
+                            <div class="rating">
+                                <a href="" class="prof-link">Handyman Pro</a>
+                                <div class="rating-num">
+                                    <div class="star-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    
+                                        <span>(247)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labori</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="professionals-div">
+                            <div class="professionals-img"><img src="assets/images/prof-1.png" class="img-fluid"></div>
+                            <h3>John Rooster</h3>
+                            <div class="rating">
+                                <a href="" class="prof-link">Handyman Pro</a>
+                                <div class="rating-num">
+                                    <div class="star-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    
+                                        <span>(247)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labori</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="professionals-div">
+                            <div class="professionals-img"><img src="assets/images/prof-1.png" class="img-fluid"></div>
+                            <h3>John Rooster</h3>
+                            <div class="rating">
+                                <a href="" class="prof-link">Handyman Pro</a>
+                                <div class="rating-num">
+                                    <div class="star-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    
+                                        <span>(247)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labori</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+<!------------------------------------- Reviews Section -------------------------->
+        <!--<section class="reviews-section">
+            <div class="container">
+                <div class="row text-center pd-reviews">
+                    <div class="col-sm-12">
+                        <h2 class="main-title text-center text-white mb-2">Customer Reviews</h2>
+                    <p class="text-white text-center">21 Reviews for Handyman Service</p>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="review-block">
+                            <div class="rev-quotes"><img src="assets/images/right-quotation-mark.png"></div>
+                            <div class="rev-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                            </div>
+                            <div class="rev-details">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-sm-4">
+                                        <img src="assets/images/rev-pic-1.png" class="img-fluid">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h3>John Rooster</h3>
+                                        <h4>CO-FOUNDER, PRESIDENT</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="review-block">
+                            <div class="rev-quotes"><img src="assets/images/right-quotation-mark.png"></div>
+                            <div class="rev-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                            </div>
+                            <div class="rev-details">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-sm-4">
+                                        <img src="assets/images/rev-pic-1.png" class="img-fluid">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h3>John Rooster</h3>
+                                        <h4>CO-FOUNDER, PRESIDENT</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="review-block">
+                            <div class="rev-quotes"><img src="assets/images/right-quotation-mark.png"></div>
+                            <div class="rev-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                            </div>
+                            <div class="rev-details">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-sm-4">
+                                        <img src="assets/images/rev-pic-1.png" class="img-fluid">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h3>John Rooster</h3>
+                                        <h4>CO-FOUNDER, PRESIDENT</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+
+
+        </div>
+
+        <ng-template #confirm>
+            <div class="modal-header">
+               <h4 class="modal-title pull-left">Get Free Quote</h4>
+               <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body" style="padding: 20px 15px;">
+              <h5 style="text-align: center;"> {{subCategoryDetails.name}} </h5>
+             
+              <section >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-wrapper ">
+                                <form [formGroup]="QuoteForm" autocomplete="off" novalidate (ngSubmit)="quote()">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Email</label>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control"    placeholder="Email" [ngClass]="{ 'is-invalid': submitted && fq.email.errors }" formControlName="email" required>
+                                        </div>
+                                    </div>         
+                                 
+                                    <div class="col-md-12">
+                                        <label>Phone</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"    placeholder="Phone" [ngClass]="{ 'is-invalid': submitted && fq.phone.errors }" formControlName="phone" required>
+                                        </div>
+                                    </div>        
+                                    
+                                    <div class="col-md-12">
+                                    <label>How many hours would you like to book?</label>
+                                    <div class="form-group">
+                                    <select class="browser-default custom-select" formControlName="hours" >
+                                       
+                                        <option value="3">3 hours</option>
+                                        <option value="4">4 hours</option>
+                                    </select>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>About</label>
+                                            <textarea  class="form-control"  [ngClass]="{ 'is-invalid': submitted && fq.about.errors }" formControlName="about" required></textarea>
+                                            <!-- <input type="password"  class="form-control"  placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password" required> -->
+                                        </div>
+                                    </div> 
+                                          
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn-cstm btn-blue">Submit</button>
+                                </div>
+                                 
+                                                  
+                                </form>
+                            </div>
+                            </div>
+                    </div>      
+                </div>
+            </section>
+            
+            
+
+
+
+
+            </div>
+          </ng-template>
+        

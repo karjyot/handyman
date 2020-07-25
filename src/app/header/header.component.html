@@ -1,0 +1,64 @@
+<header class="header">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-1 col-md-3 col-sm-2 col-xs-12">
+            <div class="logo">
+              <a href="#" routerLink = "/" class="logo">
+                <img src="assets/images/logo.png" class="img-fluid">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-6 col-sm-8 col-xs-12">
+            <nav class="navbar navbar-expand-sm ml-auto">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i _ngcontent-gav-c3="" aria-hidden="true" class="fa fa-bars"></i></span>
+        </button>
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-left">
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/services">services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/how-it-works">how it works</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav nav-right">
+          <li class="nav-item"  *ngIf= "!isLogin">
+            <a class="nav-link" href="#"  routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item" *ngIf= "!isLogin">
+            <a class="nav-link" href="#"   routerLink="/register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/pro">Become Pro</a>
+          </li>
+        </ul>
+        </div>
+      </nav>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" *ngIf= "isLogin">
+            <div class="user-right">
+                <div class="nav-item dropdown no-caret mr-3 dropdown-user">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle log-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  <img alt="profile" [src]="imageUrl"  class="img-fluid"><span>{{details.name}}</span></a>
+              <!-- <a href="" class="log-user">
+                <img src="assets/images/user-img.png" class="img-fluid"><span>John</span> -->
+
+                <div class="dropdown-menu dropdown-menu-left border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                    <a class="dropdown-item" routerLink="/dashboard"><i class="fa fa-bank" aria-hidden="true"></i>
+                     My Bookings</a>
+                     <a class="dropdown-item"  routerLink="/profile"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                     My Profile</a>
+                          <a class="dropdown-item" routerLink="/change-user-password"><i class="fa fa-lock" aria-hidden="true"></i>
+                            Change Password</a>
+                      <a class="dropdown-item" href="javascript:void()" (click) = "logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                          Logout</a>
+              
+                  </div>
+              <!-- </a> -->
+            </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</header>

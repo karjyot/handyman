@@ -1,0 +1,81 @@
+<section class="login-from bg-form pt-4">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-6 mx-auto">
+                <div class="form-wrapper ">
+                    <div class="booking-header mb-4">
+                        <h4>Registration</h4>
+                    </div>
+                    
+                        <form [formGroup]="addUserForm" autocomplete="off" novalidate (ngSubmit)="addUser(confirm)">
+                        <div class="row">
+                    
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" formControlName="first_name" class="form-control" placeholder="First name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" placeholder="Last name" formControlName="last_name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email" formControlName="email" required>
+                                </div>
+                            </div>                                   
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" formControlName="password" required>
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" placeholder="Confirm Password" formControlName="confirmPassword" required> 
+                                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                        <div *ngIf="f.confirmPassword.errors.mustMatch">Password do not matched.</div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" placeholder="Phone number" formControlName="phone" required>
+                                </div>
+                            </div>
+                                                              
+                        </div>
+                        
+                            <div class="text-center">
+                                <button class="btn-cstm btn-blue">Register</button>
+                            </div>
+                                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<ng-template #confirm>
+    <div class="modal-header">
+       <h4 class="modal-title pull-left">Confirmation</h4>
+       <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+       <span aria-hidden="true">&times;</span>
+       </button>
+    </div>
+    <div class="modal-body">
+       <p> Your account has been created with us. Please check your email for verification.
+        
+       <a href="javascript:void()" (click) = "login()"> Go back to login page</a></p>
+    </div>
+  </ng-template>

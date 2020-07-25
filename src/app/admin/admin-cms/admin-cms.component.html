@@ -1,0 +1,291 @@
+<div class="container-fluid" style="padding: 0px">
+    <div id="ui-view">
+       <div>
+          <div class="animated fadeIn">
+             <div class="card">
+                <div class="card-header">
+                   <i class="fa fa-edit"></i> CMS
+                 
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+<div class="modal-body" style="padding:27px">
+      <div class="row">
+         <div class="col-md-12">
+            
+               <form class="signup" [formGroup]="contentForm"  (ngSubmit)="save()">
+                <!-- <div class="row">
+                 
+                 </div> -->
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group" [ngClass]="{ 'error': submitted && f.header.errors }"> 
+                        <label for="email_id" class="control-label"> Header Section</label>
+                        <textarea type="text" [(ngModel)]="custom.header"   [ngClass]="{ 'is-invalid': submitted && f.header.errors }" formControlName="header" class="form-control" id="email_id" name="email_name"
+                        ></textarea>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group"> 
+                        <label for="email_id" class="control-label">Lower Header</label>
+                        <textarea type="text" [(ngModel)]="custom.upperHeader"   [ngClass]="{ 'is-invalid': submitted && f.upperHeader.errors }" formControlName="upperHeader" class="form-control" id="email_id" name="email_name" ></textarea>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group"> 
+                        <label for="email_id" class="control-label">Bottom</label>
+                        <textarea type="text" [(ngModel)]="custom.about"   [ngClass]="{ 'is-invalid': submitted && f.about.errors }" formControlName="about" class="form-control" id="email_id" name="email_name" ></textarea>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{ 'error': submitted && f.contact.errors }"> 
+                       <label for="email_id" class="control-label"> Contact</label>
+                       <input type="text" [(ngModel)]="custom.contact"   [ngClass]="{ 'is-invalid': submitted && f.contact.errors }" formControlName="contact" class="form-control" id="email_id" name="email_name" 
+                       >
+                    </div>
+                 </div>
+                  <!-- <div class="col-md-6">
+                     <div class="form-group"> 
+                        <label for="email_id" class="control-label">Create Account</label>
+                        <textarea type="password" [(ngModel)]="custom.how"   [ngClass]="{ 'is-invalid': submitted && f.how.errors }" formControlName="how" class="form-control" id="email_id" name="email_name" ></textarea>
+                     </div>
+                  </div> -->
+               </div>
+
+               <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group"> 
+                       <label for="email_id" class="control-label">Need Something Else(text)</label>
+                       <textarea type="password" [(ngModel)]="custom.how"   [ngClass]="{ 'is-invalid': submitted && f.how.errors }" formControlName="how" class="form-control" id="email_id" name="email_name" ></textarea>
+                    </div>
+                 </div>
+
+                 <div class="col-md-6">
+                    <div class="form-group"> 
+                       <label for="email_id" class="control-label">How it works(1)</label>
+                       <textarea type="password" [(ngModel)]="custom.signin"   [ngClass]="{ 'is-invalid': submitted && f.signin.errors }" formControlName="signin" class="form-control" id="email_id" name="email_name" ></textarea>
+                    </div>
+                 </div>
+               </div>
+
+               <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group"> 
+                       <label for="email_id" class="control-label">How it works(2)</label>
+                       <textarea type="password" [(ngModel)]="custom.choose"   [ngClass]="{ 'is-invalid': submitted && f.choose.errors }" formControlName="choose" class="form-control" id="email_id" name="email_name" ></textarea>
+                    </div>
+                 </div>
+
+                 <div class="col-md-6">
+                    <div class="form-group"> 
+                       <label for="email_id" class="control-label">How it works(3)</label>
+                       <textarea type="password" [(ngModel)]="custom.submit"   [ngClass]="{ 'is-invalid': submitted && f.submit.errors }" formControlName="submit" class="form-control" id="email_id" name="email_name" ></textarea>
+                    </div>
+                 </div>
+               </div>
+
+
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group"> 
+                        <label for="email_id" class="control-label">Q1</label>
+                        <textarea  [(ngModel)]="custom.fq1"   [ngClass]="{ 'is-invalid': submitted && f.fq1.errors }" formControlName="fq1" class="form-control" id="email_id" name="email_name"></textarea>
+                        <input type="text" style="margin-top: 5px;" [(ngModel)]="custom.fq1Ans"   [ngClass]="{ 'is-invalid': submitted && f.fq1Ans.errors }" formControlName="fq1Ans" class="form-control" id="email_id" name="email_name" >
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group"> 
+                        <label for="email_id" class="control-label">Q2</label>
+                        <textarea [(ngModel)]="custom.fq2"   [ngClass]="{ 'is-invalid': submitted && f.fq2.errors }" formControlName="fq2" class="form-control" id="email_id" name="email_name">
+                           </textarea>
+                        <textarea  style="margin-top: 5px;" [(ngModel)]="custom.fq2Ans"   [ngClass]="{ 'is-invalid': submitted && f.fq2Ans.errors }" formControlName="fq2Ans" class="form-control" id="email_id" name="email_name" ></textarea>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="row">
+                <div class="col-md-6">
+                   <div class="form-group"> 
+                      <label for="email_id" class="control-label">Q3</label>
+                      <textarea [(ngModel)]="custom.fq3"   [ngClass]="{ 'is-invalid': submitted && f.fq3.errors }" formControlName="fq3" class="form-control" id="email_id" name="email_name"></textarea>
+                      <textarea  style="margin-top: 5px;" [(ngModel)]="custom.fq3Ans"   [ngClass]="{ 'is-invalid': submitted && f.fq3Ans.errors }" formControlName="fq3Ans" class="form-control" id="email_id" name="email_name" ></textarea>
+                   </div>
+                </div>
+                <div class="col-md-6">
+                   <div class="form-group"> 
+                      <label for="email_id" class="control-label">Q4</label>
+                      <textarea [(ngModel)]="custom.fq4"   [ngClass]="{ 'is-invalid': submitted && f.fq4.errors }" formControlName="fq4" class="form-control" id="email_id" name="email_name" ></textarea>
+                      <textarea style="margin-top: 5px;" [(ngModel)]="custom.fq4Ans"   [ngClass]="{ 'is-invalid': submitted && f.fq4Ans.errors }" formControlName="fq4Ans" class="form-control" id="email_id" name="email_name" ></textarea>
+                   </div>
+                </div>
+             </div>
+
+             
+             <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group"> 
+                     <label for="email_id" class="control-label">Q5</label>
+                     <textarea [(ngModel)]="custom.fq5"   [ngClass]="{ 'is-invalid': submitted && f.fq4.errors }" formControlName="fq5" class="form-control" id="email_id" name="email_name" ></textarea>
+                     <textarea  style="margin-top: 5px;" [(ngModel)]="custom.fq5Ans"   [ngClass]="{ 'is-invalid': submitted && f.fq5Ans.errors }" formControlName="fq5Ans" class="form-control" id="email_id" name="email_name" ></textarea>
+                  </div>
+               </div>
+
+               <div class="col-md-6">
+                  <div class="form-group"> 
+                     <label for="email_id" class="control-label">Email</label>
+                     <input type="text" [(ngModel)]="custom.dd1"   [ngClass]="{ 'is-invalid': submitted && f.dd1.errors }" formControlName="dd1" class="form-control" id="email_id" name="email_name">
+                    
+                  </div>
+               </div>
+          
+            </div>
+            
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group"> 
+                     <label for="email_id" class="control-label">Address</label>
+                     <textarea type="text" [(ngModel)]="custom.dd2"   [ngClass]="{ 'is-invalid': submitted && f.dd2.errors }" formControlName="dd2" class="form-control" id="email_id" name="email_name" ></textarea>
+                    
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group"> 
+                     <label for="email_id" class="control-label">Lower Text</label>
+                     <textarea [(ngModel)]="custom.dd4"   [ngClass]="{ 'is-invalid': submitted && f.dd4.errors }" formControlName="dd4" class="form-control" id="email_id" name="email_name" ></textarea>
+                   
+                  </div>
+               </div>
+            
+            </div>
+            <div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group"> 
+                        <label for="email_id" class="control-label">Under lower Text</label>
+                        <textarea [(ngModel)]="custom.dd5"   [ngClass]="{ 'is-invalid': submitted && f.dd5.errors }" formControlName="dd5" class="form-control" id="email_id" name="email_name" ></textarea>
+                      
+                     </div>
+                  </div>
+         </div>
+
+       <div style="display: block;
+       text-align: center;
+       font-size: 20px;
+       margin-top: 30px;
+       margin-bottom: 30px;"><b>Service page content</b></div>  
+
+
+
+<div class="row">
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Pick a time</label>
+         <textarea type="text" [(ngModel)]="custom.pickTime"   formControlName="pickTime" class="form-control" id="email_id" name="email_name" ></textarea>
+        
+      </div>
+   </div>
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Book instantly</label>
+         <textarea type="text" [(ngModel)]="custom.bookInstatnly"   formControlName="bookInstatnly" class="form-control" id="email_id" name="email_name" ></textarea>
+       
+      </div>
+   </div>
+
+</div>
+
+<div class="row">
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Your pro arrives</label>
+         <textarea type="text" [(ngModel)]="custom.proArrives"   formControlName="proArrives" class="form-control" id="email_id" name="email_name" ></textarea>
+        
+      </div>
+   </div>
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Pick a Time(lower)</label>
+         <textarea type="text" [(ngModel)]="custom.pickTimeLower" formControlName="pickTimeLower" class="form-control" id="email_id" name="email_name" ></textarea>
+       
+      </div>
+   </div>
+
+</div>
+
+<div class="row">
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Skilled and capable</label>
+         <textarea type="text" [(ngModel)]="custom.skilled"   formControlName="skilled" class="form-control" id="email_id" name="email_name" ></textarea>
+        
+      </div>
+   </div>
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Reliable</label>
+         <textarea type="text" [(ngModel)]="custom.reliable" formControlName="reliable" class="form-control" id="email_id" name="email_name" >
+       </textarea>
+      </div>
+   </div>
+
+</div>
+
+<div class="row">
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Flexible</label>
+         <textarea type="text" [(ngModel)]="custom.flexible"   formControlName="flexible" class="form-control" id="email_id" name="email_name" ></textarea>
+        
+      </div>
+   </div>
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Tile-1</label>
+         <input type="text" [(ngModel)]="custom.lowrTitle1" formControlName="lowrTitle1" class="form-control" id="email_id" name="email_name" >
+
+         <textarea type="text" [(ngModel)]="custom.text1"   formControlName="text1" class="form-control" id="email_id" name="email_name" ></textarea>
+       
+      </div>
+   </div>
+
+</div>
+
+<div class="row">
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Tile-2</label>
+         <input type="text" [(ngModel)]="custom.lowrTitle2" formControlName="lowrTitle2" class="form-control" id="email_id" name="email_name" >
+
+         <textarea type="text" [(ngModel)]="custom.text2"   formControlName="text2" class="form-control" id="email_id" name="email_name" ></textarea>
+       
+      </div>
+   </div>
+   <div class="col-md-6">
+      <div class="form-group"> 
+         <label for="email_id" class="control-label">Tile-3</label>
+         <input type="text" [(ngModel)]="custom.lowrTitle3" formControlName="lowrTitle3" class="form-control" id="email_id" name="email_name" >
+
+         <textarea type="text" [(ngModel)]="custom.text3"   formControlName="text3" class="form-control" id="email_id" name="email_name" ></textarea>
+       
+      </div>
+   </div>
+
+</div>
+
+
+
+
+      </div>
+               <div class="form-group">
+                  <!-- Submit button !-->
+                  <button  class="btn btn-secondary btn-blue" style="color:white">Submit</button>
+               </div>
+               </form>
+            </div>
+         </div>
+      </div>

@@ -1,0 +1,8 @@
+<div class="banner services-page custom-service" *ngIf="terms" [style.background]="'url(' + terms.image + ')'">
+</div>
+
+<div class="inner-page-content">
+    <div class="container">
+<div  *ngIf="terms" [innerHTML]="terms.content"></div>
+</div>
+</div>

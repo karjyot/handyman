@@ -1,0 +1,141 @@
+<main class="main">
+  <!-- Breadcrumb-->
+  <ol class="breadcrumb">
+     <li class="breadcrumb-item active">Dashboard</li>
+     <!-- Breadcrumb Menu-->
+     <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group">
+        </div>
+     </li>
+  </ol>
+  <div class="container-fluid">
+     <div class="animated fadeIn">
+        <div class="row">
+           <div class="col-sm-6 col-lg-3">
+              <div class="card text-white bg-primary">
+                 <div class="card-body pb-0">
+                    <button class="btn btn-transparent p-0 float-right" type="button">
+                   
+                    </button>
+                    <div class="text-value" *ngIf="listCounts">{{listCounts.users}}</div>
+                    <div>Total Users</div>
+                 </div>
+                 <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                    <canvas class="chart" id="card-chart1" height="70"></canvas>
+                 </div>
+              </div>
+           </div>
+           <!-- /.col-->
+           <!-- /.col-->
+           <div class="col-sm-6 col-lg-3">
+              <div class="card text-white bg-warning">
+                 <div class="card-body pb-0">
+                    <button class="btn btn-transparent p-0 float-right" type="button">
+                    <i class="cui-comment-square icons"></i>
+                    </button>
+                    <div class="text-value" *ngIf="listCounts">{{listCounts.comments}}</div>
+                    <div>Total Categories</div>
+                 </div>
+                 <div class="chart-wrapper mt-3" style="height:70px;">
+                    <canvas class="chart" id="card-chart3" height="70"></canvas>
+                 </div>
+              </div>
+           </div>
+           <!-- /.col-->
+           <div class="col-sm-6 col-lg-3">
+              <div class="card text-white bg-danger">
+                 <div class="card-body pb-0">
+                    <button class="btn btn-transparent p-0 float-right" type="button">
+                    <i class="cui-dashboard icons"></i>
+                    </button>
+                    <div class="text-value" *ngIf="listCounts">{{listCounts.posts}}</div>
+                    <div>Sub Categories</div>
+                 </div>
+                 <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                    <canvas class="chart" id="card-chart4" height="70"></canvas>
+                 </div>
+              </div>
+           </div>
+           <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-success">
+               <div class="card-body pb-0">
+                  <button class="btn btn-transparent p-0 float-right" type="button">
+                  <i class="cui-dashboard icons"></i>
+                  </button>
+                  <div class="text-value" *ngIf="listCounts">{{listCounts.domains}}</div>
+                  <div>Total Bookings</div>
+               </div>
+               <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                  <canvas class="chart" id="card-chart4" height="70"></canvas>
+               </div>
+            </div>
+         </div>
+           <div class="col-lg-6">
+              <div class="card">
+                 <div class="card-header"><i class="fa fa-align-justify"></i> Most Recent Users </div>
+                 <div class="card-body">
+                    <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                       <thead>
+                          <tr>
+                             <th>Username</th>
+                             <th style="width:200px;">Date registered</th>
+                             <th>Email</th>
+                             <th>Status</th>
+                          </tr>
+                       </thead>
+                       <tbody>
+                          <tr *ngFor="let item of listUsers| slice:0:5; let i = index">
+                             <td class="wordBreak">{{item.name}} {{item.last_name}}</td>
+                             <td class="wordBreak">{{item.created_at | date}}</td>
+                             <td class="wordBreak">{{item.email}}</td>
+                             <td>
+                                <span class="badge badge-success" *ngIf="item.status==1">Active</span>
+                                <span class="badge badge-danger" *ngIf="item.status==0">Inactive</span>
+                             </td>
+                          </tr>
+                       </tbody>
+                    </table>
+                 </div>
+              </div>
+           </div>
+           <div class="col-lg-6">
+              <div class="card">
+                 <div class="card-header"><i class="fa fa-align-justify"></i>Most Recent Bookings</div>
+                 <div class="card-body">
+                    <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                       <thead>
+                          <tr>
+                            
+                             <th style="width: 224px;">Name</th>
+                             <th style="width: 224px;">Price</th>
+                             <th style="width: 224px;">email</th>
+                             <th style="width: 224px;">Installation Date</th>
+                           
+                          </tr>
+                       </thead>
+                       <tbody>
+                          <tr *ngFor="let items of records | slice:0:5; let i = index">
+                           <td class="wordBreak">{{items.first_name}} {{items.last_name}}</td>
+                           <td class="wordBreak">${{items.price }}</td>
+                           <td class="wordBreak">
+                              {{items.email}}
+                            </td>
+                              <td class="wordBreak">{{items.date }} @{{items.time}}</td>
+            
+                              
+
+                           </tr>
+                          
+                       </tbody>
+                    </table>
+              
+                 </div>
+              </div>
+              </div>
+           <!-- /.col-->
+        </div>
+        <!-- /.row-->
+        <!-- /.row-->
+     </div>
+  </div>
+</main>

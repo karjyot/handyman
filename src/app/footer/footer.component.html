@@ -1,0 +1,151 @@
+<div class="subscribe">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 mx-auto">
+        <form action="" method="post">	
+          <div class="input-group">
+              <input type="email" class="form-control" [(ngModel)] = "email"  [ngModelOptions]="{standalone: true}" placeholder="Enter your email" required="required">
+              <div class="input-group-append">
+                <input type="button" (click)="subscribe()" class="btn btn-primary" value="Subscribe">
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="page-footer">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+    
+    <!-- Grid row -->
+    <div class="row">
+    
+    <!-- Grid column -->
+    <div class="col-md-4 mx-auto">
+    
+      <!-- Content -->
+      <h5 class="mt-2 mb-4">Address</h5>
+      <p class="addr" *ngIf="home">{{home.dd2}}</p>
+    <p><a href="javascript:" *ngIf="home">{{home.dd1}}</a></p>
+    <p><a href="javascript:" *ngIf="home">{{home.contact}}</a></p>
+    
+    </div>
+    <!-- Grid column -->
+    
+    <hr class="clearfix w-100 d-md-none">
+    
+    <!-- Grid column -->
+    <div class="col-md-2 mx-auto">
+    
+      <!-- Links -->
+      <h5 class="mt-2 mb-4">Main Menu</h5>
+    
+      <ul class="list-footer">
+        <li>
+          <a href="#!" routerLink="/">Home</a>
+        </li>
+        <li>
+          <a href="#!" routerLink="/how-it-works">How it works</a>
+        </li>
+        <li>
+          <a href="#!" routerLink="/faq">FAQs</a>
+        </li>
+        <li>
+          <a href="#!"  routerLink="/about">About Us</a>
+        </li>
+      </ul>
+    
+    </div>
+    <!-- Grid column -->
+    
+    <hr class="clearfix w-100 d-md-none">
+    
+    <!-- Grid column -->
+    <div class="col-md-2 mx-auto">
+    
+      <!-- Links -->
+      <h5 class="mt-2 mb-4" >Help</h5>
+    
+      <ul class="list-footer">
+        <li>
+          <a href="#!"  routerLink="/privacy">Privacy policy</a>
+        </li>
+        <li>
+          <a href="#!"  routerLink="/terms">Terms & Conditions</a>
+        </li>
+        <li>
+          <a href="#!" routerLink="/register">Signup</a>
+        </li>
+        <li>
+          <a href="#!" routerLink="/login">Login</a>
+        </li>
+      </ul>
+    
+    </div>
+    <!-- Grid column -->
+    
+    <hr class="clearfix w-100 d-md-none">
+    
+    <!-- Grid column -->
+    <div class="col-md-2 mx-auto">
+    
+      <!-- Links -->
+      <h5 class="mt-2 mb-4">Services</h5>
+    
+      <ul class="list-footer">
+        <li *ngFor="let sevices of cate | slice:0:4">
+          <a href="javascript:" (click)="handymanService(sevices.id)">{{sevices.name}}</a>
+        </li>
+        <!-- <li>
+          <a href="#!">Electronics</a>
+        </li>
+        <li>
+          <a href="#!">TV Repair</a>
+        </li>
+        <li>
+          <a href="#!">Plumbing</a>
+        </li>
+        <li>
+          <a href="#!">Home Cleaning</a>
+        </li> -->
+      </ul>
+    
+    </div>
+    <!-- Grid column -->
+    
+    </div>
+    <!-- Grid row -->
+    <hr>
+    </div>
+    <!-- Footer Links --> 
+    
+    <!-- Copyright -->
+    <div id="sub-footer" class="theme-bg-dark">
+    <div class="container">
+    <div class="row">
+    
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="sub-footer-left">
+          <ul>
+            <li><a href="#" routerLink="/support">Contact</a></li>
+            <li><a href="#" routerLink="/about">About Us</a></li>
+            <li><a href="#" routerLink="/privacy">Privacy Policy</a></li>
+            <li><a href="#" routerLink="/terms">Terms and Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="sub-footer-right">
+          <p>copyright © 2020 all rights reserved</p>
+        </div>
+      </div>
+    
+    </div>
+    </div>
+    </div>
+    <!-- Copyright -->
+    
+    </footer>
