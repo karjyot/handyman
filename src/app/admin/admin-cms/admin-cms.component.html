@@ -68,6 +68,7 @@
                  <div class="col-md-6">
                     <div class="form-group"> 
                        <label for="email_id" class="control-label">How it works(1)</label>
+                     <input type="text" formControlName="worksTitle1"  class="form-control" >
                        <textarea type="password" [(ngModel)]="custom.signin"   [ngClass]="{ 'is-invalid': submitted && f.signin.errors }" formControlName="signin" class="form-control" id="email_id" name="email_name" ></textarea>
                     </div>
                  </div>
@@ -77,6 +78,7 @@
                 <div class="col-md-6">
                     <div class="form-group"> 
                        <label for="email_id" class="control-label">How it works(2)</label>
+                       <input type="text" formControlName="worksTitle2"  class="form-control" >
                        <textarea type="password" [(ngModel)]="custom.choose"   [ngClass]="{ 'is-invalid': submitted && f.choose.errors }" formControlName="choose" class="form-control" id="email_id" name="email_name" ></textarea>
                     </div>
                  </div>
@@ -84,6 +86,7 @@
                  <div class="col-md-6">
                     <div class="form-group"> 
                        <label for="email_id" class="control-label">How it works(3)</label>
+                       <input type="text" formControlName="worksTitle3"  class="form-control" >
                        <textarea type="password" [(ngModel)]="custom.submit"   [ngClass]="{ 'is-invalid': submitted && f.submit.errors }" formControlName="submit" class="form-control" id="email_id" name="email_name" ></textarea>
                     </div>
                  </div>

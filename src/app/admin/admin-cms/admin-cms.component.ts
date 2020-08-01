@@ -16,7 +16,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class AdminCmsComponent implements OnInit {
   contentForm : FormGroup
   submitted = false
-  public custom = {dd1:"",dd2:"",dd3:"",dd4:"",dd5:"",contact:"",header:"",signin:"",choose:"",submit:"",upperHeader:"",about:"",how:"",fq1:"",fq1Ans:"",fq2:"",fq2Ans:"",fq3:"",fq4:"",fq5:"",fq3Ans:"",fq4Ans:"",fq5Ans:"",pickTime:"",bookInstatnly:"",proArrives:"",pickTimeLower:"",skilled:"",reliable:"",flexible:"",lowrTitle1:"",text1:"",lowrTitle2:"",lowrTitle3:"",text3:"",text2:""};
+  public custom = {dd1:"",dd2:"",dd3:"",dd4:"",dd5:"",contact:"",header:"",signin:"",choose:"",submit:"",upperHeader:"",about:"",how:"",fq1:"",fq1Ans:"",fq2:"",fq2Ans:"",fq3:"",fq4:"",fq5:"",fq3Ans:"",fq4Ans:"",fq5Ans:"",pickTime:"",bookInstatnly:"",proArrives:"",pickTimeLower:"",skilled:"",reliable:"",flexible:"",lowrTitle1:"",text1:"",lowrTitle2:"",lowrTitle3:"",text3:"",text2:"",worksTitle3:"",worksTitle2:"",worksTitle1:""};
   constructor(private loginService: LoginService,private adminService: AdminService,private modalService: BsModalService,private formBuilder:FormBuilder,private ngxService: NgxUiLoaderService,private toastr: ToastrService,private router : Router,) { }
 
   ngOnInit() {
@@ -57,6 +57,9 @@ export class AdminCmsComponent implements OnInit {
       lowrTitle3:[''],
       text3:[''],
       text2:[''],
+      worksTitle3:[''],
+      worksTitle1:[''],
+      worksTitle2:[''],
 
      
   });
@@ -85,6 +88,10 @@ export class AdminCmsComponent implements OnInit {
     this.custom.dd3 = result.dd3
     this.custom.dd4 = result.dd4
     this.custom.dd5 = result.dd5
+
+    this.custom.worksTitle3 = result.worksTitle3
+    this.custom.worksTitle2 = result.worksTitle2
+    this.custom.worksTitle1 = result.worksTitle1
 
 
     this.custom.pickTime = result.pickTime
