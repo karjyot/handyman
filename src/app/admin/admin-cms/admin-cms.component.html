@@ -174,7 +174,25 @@
                       
                      </div>
                   </div>
+                  <div class="col-md-6">
+                     <div class="form-group"> 
+                        <label for="email_id" class="control-label">Facebook</label>
+                        <textarea [(ngModel)]="custom.facebook"   [ngClass]="{ 'is-invalid': submitted && f.facebook.errors }" formControlName="facebook" class="form-control" id="email_id" name="email_name" ></textarea>
+                      
+                     </div>
+                  </div>
          </div>
+
+         <div class="row">
+            <div class="col-md-6">
+               <div class="form-group"> 
+                  <label for="email_id" class="control-label">Twitter</label>
+                  <textarea [(ngModel)]="custom.twitter"   [ngClass]="{ 'is-invalid': submitted && f.twitter.errors }" formControlName="twitter" class="form-control" id="email_id" name="email_name" ></textarea>
+                
+               </div>
+            </div>
+         
+   </div>
 
        <div style="display: block;
        text-align: center;

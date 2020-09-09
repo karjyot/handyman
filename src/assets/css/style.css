@@ -213,7 +213,7 @@ span.call-phone { position: absolute;z-index: 999;width: 32px;height: auto;botto
     margin-bottom: 50px;
 }
 .number {
-    display: block;
+    display: block;    margin-top: 30px;
     text-align: center;
 }
 .number h5{
@@ -752,7 +752,7 @@ ul.cd-breadcrumb {
     width: 100%;
 }
 th.mat-header-cell {
-    width: 16.6%;
+    width: 13%;
 }
 th.mat-header-cell {
     font-size: 14px;
@@ -850,3 +850,14 @@ button:focus {
         padding-left: 20px;
     }
     .inner-page-content{padding:40px 0px;}
+.social-icons{
+    margin-top:20px;
+}
+.social-icons ul {padding:0px;margin:0px;}
+.social-icons ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+.th.mat-header-cell.cdk-header-cell.cdk-column-hours.mat-column-hours.ng-star-inserted {
+    width: 10.3% !important;
+}

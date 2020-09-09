@@ -1,6 +1,6 @@
 <!---------------- Banner Section -------------->
-<div class="banner services-page custom-service" *ngIf="jobDetails" [style.background]="'url(' + jobDetails.main_image + ')'">
-</div>
+<!-- <div class="banner services-page custom-service" *ngIf="jobDetails" [style.background]="'url(' + jobDetails.main_image + ')'">
+</div> -->
 <!---------------- Banner Section Bottom -------------->
 <div class="booking-form pd-40">
     <div class="container">
@@ -85,7 +85,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text">+1</span>
                             </div>
-                            <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" formControlName="phone" required>
+                            <input type="text" class="form-control" OnlyNumber="true" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" formControlName="phone" required>
                             <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
                               <div *ngIf="f.phone.errors.required">Phone is required</div>
                         

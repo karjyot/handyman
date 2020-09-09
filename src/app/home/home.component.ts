@@ -120,7 +120,7 @@ home:any
     }else{
      this.loginService.setBookingDetails(this.selectedService)
     let name = this.selectedService.name.replace(/\s+/g, '-').toLowerCase();
-    this.router.navigateByUrl('/services/'+name+'/'+this.selectedService.id)
+    this.router.navigateByUrl('/services/'+name)
     }
   }
 
@@ -139,7 +139,7 @@ home:any
     }
     this.loginService.setBookingDetails(this.selectedService)
     let name = this.selectedService.name.replace(/\s+/g, '-').toLowerCase();
-    this.router.navigateByUrl('/services/'+name+'/'+this.selectedService.id)
+    this.router.navigateByUrl('/services/'+name)
    
   }
   searchSingle(value){
@@ -152,7 +152,7 @@ home:any
     }
     this.loginService.setBookingDetails(this.selectedService)
     let name = this.selectedService.name.replace(/\s+/g, '-').toLowerCase();
-    this.router.navigateByUrl('/services/'+name+'/'+this.selectedService.id)
+    this.router.navigateByUrl('/services/'+name)
   }
   handymanService(id){
     this.loginService.setCatID({id:id})

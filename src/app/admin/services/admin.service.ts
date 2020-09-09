@@ -14,6 +14,9 @@ export class AdminService {
   getListUsers() {
     return this.http.get(AppSettings.API_ENDPOINT  + 'admin/getListUsers');
   }
+  getListUsersAdmin() {
+    return this.http.get(AppSettings.API_ENDPOINT  + 'admin/getListUsersAdmin');
+  }
   getListPosts() {
     return this.http.get(AppSettings.API_ENDPOINT  + 'admin/getListPosts');
   } 
@@ -38,6 +41,12 @@ export class AdminService {
   
   deleteUser(id) {
     return this.http.get(AppSettings.API_ENDPOINT  + 'admin/deleteUser/'+id);
+  } 
+  deleteQuote(id) {
+    return this.http.get(AppSettings.API_ENDPOINT  + 'deleteQuote/'+id);
+  } 
+  getListQuotes() {
+    return this.http.get(AppSettings.API_ENDPOINT  + 'getListQuotes');
   } 
   
   deleteCategory(id) {

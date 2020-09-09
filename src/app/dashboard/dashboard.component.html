@@ -36,7 +36,7 @@
     <!-- Position Column -->
     <ng-container matColumnDef="order_id">
       <th mat-header-cell *matHeaderCellDef> Order ID. </th>
-      <td mat-cell *matCellDef="let element"> {{element.order_id}} </td>
+      <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
     </ng-container>
     <ng-container matColumnDef="job">
       <th mat-header-cell *matHeaderCellDef> Job. </th>
@@ -57,14 +57,28 @@
     </ng-container>
   
     <!-- Symbol Column -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef> Price </th>
-      <td mat-cell *matCellDef="let element">${{element.price}}  </td>
+    <ng-container matColumnDef="zip">
+      <th mat-header-cell *matHeaderCellDef> Zip </th>
+      <td mat-cell *matCellDef="let element">{{element.zip}}  </td>
     </ng-container>
 
     <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <th mat-header-cell *matHeaderCellDef> About </th>
       <td mat-cell *matCellDef="let element"  (click)="address(confirm,element)"><button class="view-btn btn-blue">View</button> </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element" >
+        <span *ngIf="element.status == 0" style="color:green">Active</span>
+        <span *ngIf="element.status == 1" style="color:red">Cancelled</span>
+       
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="cancelbooking(templatechangeStatus,element)" class="view-btn btn-blue" *ngIf="element.dateConverted > currentDate && element.status == 0">Cancel</button> <button class="view-btn btn-blue" *ngIf = 'element.status == 1 && element.dateConverted > currentDate' (click)="editBooking(element)">Reschdule</button></td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -87,19 +101,19 @@
   </div>
   <div class="modal-body">
     <div class="row">
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
         <label>Phone</label>
         <p>{{currentRow.phone}}</p>
 
-      </div>
+      </div> -->
 
-      <div class="col-md-6">
+      <div class="col-md-12">
         <label>About</label>
-        <p>{{currentRow.about_job}}</p>
+        <p>{{currentRow.about}}</p>
       </div>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-6">
         <label>APT</label>
         <p>{{currentRow.apt}}</p>
@@ -123,10 +137,24 @@
         <label>Zip</label>
         <p>{{currentRow.zip}}</p>
       </div>
-    </div>
+    </div> -->
    
     
 
 
+  </div>
+</ng-template>
+
+<ng-template #templatechangeStatus>
+  <div class="modal-header">
+     <h4 class="modal-title pull-left">Change Status</h4>
+     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRefStatus.hide()">
+     <span aria-hidden="true">&times;</span>
+     </button>
+  </div>
+  <div class="modal-body">
+     <p>Are you sure you want to cancel this Booking?</p>
+     <button _ngcontent-c4="" class="btn btn-blue" style="color: white;" type="button" (click) = "confirmChangeStatus()">Yes</button>
+     <button _ngcontent-c4="" class="btn btn-danger" style="margin-left:10px" type="button" (click)="modalRefStatus.hide()">No</button>
   </div>
 </ng-template>

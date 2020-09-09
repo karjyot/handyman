@@ -37,12 +37,14 @@
                             <form  [formGroup]="bookingForm" autocomplete="off" novalidate (ngSubmit)="book(confirm,confirm1)">	
                    <p class="h4 mb-4">{{subCategoryDetails.name}}</p>
                 <!-- Name -->
+                <p class="h6 mb-2 text-center">Zip</p>
                 <input (change)="validatePinCode()" type="text" class="form-control" placeholder="ZIP code" [ngClass]="{ 'is-invalid': submitted && f.zip.errors }" OnlyNumber="true" maxlength="8" formControlName="zip" required>    
                 <div *ngIf="submitted && f.zip.errors" class="invalid-feedback">
                     <div *ngIf="f.zip.errors.required">Please enter the valid zip</div>
                     <div *ngIf="!f.zip.errors.required">we are sorry we currently don't provide service in this area</div>
                 </div>
-
+                <p class="h6 mb-2 text-center">Phone</p>
+                <input  type="text" class="form-control" placeholder="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" OnlyNumber="true" maxlength="15" formControlName="phone" required>    
                        <p class="h6 mb-2 text-center">Tell us about the job</p>
                        <!-- Message -->
                     <div class="form-group">
@@ -108,7 +110,7 @@
                     <!-- phone -->
                     <!-- <input type="email" formControlName="phone"  id="defaultContactFormEmail" class="form-control mb-2" placeholder="Phone Number(Optional)"> -->
                     <!-- Send button -->
-                    <button class="btn btn-info btn-block" type="submit">get a price</button>
+                    <button class="btn btn-info btn-block" type="submit">Update</button>
 
                 </form>
                       </div>
@@ -330,281 +332,8 @@
 </section>
 
 
-    <!--<section class="professionals-section text-center">
-            <div class="container">
-                <h2 class="main-title text-center mb-4">Meet Some of Our Top Handyman Service Professionals</h2>
-                <div class="row">
-                    <div class="col-sm-4 col-xs-12">
-                        <div class="professionals-div">
-                            <div class="professionals-img"><img src="assets/images/prof-1.png" class="img-fluid"></div>
-                            <h3>John Rooster</h3>
-                            <div class="rating">
-                                <a href="" class="prof-link">Handyman Pro</a>
-                                <div class="rating-num">
-                                    <div class="star-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    
-                                        <span>(247)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labori</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12">
-                        <div class="professionals-div">
-                            <div class="professionals-img"><img src="assets/images/prof-1.png" class="img-fluid"></div>
-                            <h3>John Rooster</h3>
-                            <div class="rating">
-                                <a href="" class="prof-link">Handyman Pro</a>
-                                <div class="rating-num">
-                                    <div class="star-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    
-                                        <span>(247)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labori</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12">
-                        <div class="professionals-div">
-                            <div class="professionals-img"><img src="assets/images/prof-1.png" class="img-fluid"></div>
-                            <h3>John Rooster</h3>
-                            <div class="rating">
-                                <a href="" class="prof-link">Handyman Pro</a>
-                                <div class="rating-num">
-                                    <div class="star-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    
-                                        <span>(247)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labori</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-<!------------------------------------- Reviews Section -------------------------->
-        <!--<section class="reviews-section">
-            <div class="container">
-                <div class="row text-center pd-reviews">
-                    <div class="col-sm-12">
-                        <h2 class="main-title text-center text-white mb-2">Customer Reviews</h2>
-                    <p class="text-white text-center">21 Reviews for Handyman Service</p>
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 col-xs-12">
-                        <div class="review-block">
-                            <div class="rev-quotes"><img src="assets/images/right-quotation-mark.png"></div>
-                            <div class="rev-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                            </div>
-                            <div class="rev-details">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col-sm-4">
-                                        <img src="assets/images/rev-pic-1.png" class="img-fluid">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3>John Rooster</h3>
-                                        <h4>CO-FOUNDER, PRESIDENT</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12">
-                        <div class="review-block">
-                            <div class="rev-quotes"><img src="assets/images/right-quotation-mark.png"></div>
-                            <div class="rev-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                            </div>
-                            <div class="rev-details">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col-sm-4">
-                                        <img src="assets/images/rev-pic-1.png" class="img-fluid">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3>John Rooster</h3>
-                                        <h4>CO-FOUNDER, PRESIDENT</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12">
-                        <div class="review-block">
-                            <div class="rev-quotes"><img src="assets/images/right-quotation-mark.png"></div>
-                            <div class="rev-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                            </div>
-                            <div class="rev-details">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col-sm-4">
-                                        <img src="assets/images/rev-pic-1.png" class="img-fluid">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3>John Rooster</h3>
-                                        <h4>CO-FOUNDER, PRESIDENT</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-
 
         </div>
 
-        <ng-template #confirm>
-            <div class="modal-header">
-               <h4 class="modal-title pull-left">Get Free Quote</h4>
-               <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
-               <span aria-hidden="true">&times;</span>
-               </button>
-            </div>
-            <div class="modal-body" style="padding: 20px 15px;">
-              <h5 style="text-align: center;"> {{subCategoryDetails.name}} </h5>
-             
-              <section >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-wrapper ">
-                                <form [formGroup]="QuoteForm" autocomplete="off" novalidate (ngSubmit)="quote()">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Email</label>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control"    placeholder="Email" [ngClass]="{ 'is-invalid': submitted && fq.email.errors }" formControlName="email" required>
-                                        </div>
-                                    </div>         
-                                 
-                                    <div class="col-md-12">
-                                        <label>Phone</label>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control"    placeholder="Phone" [ngClass]="{ 'is-invalid': submitted && fq.phone.errors }" formControlName="phone" required>
-                                        </div>
-                                    </div>        
-                                    
-                                    <div class="col-md-12">
-                                    <label>How many hours would you like to book?</label>
-                                    <div class="form-group">
-                                    <select class="browser-default custom-select" formControlName="hours" >
-                                        <option value="2">2 hours</option>
-                                        <option value="3">3 hours</option>
-                                        <option value="4">4 hours</option>
-                                    </select>
-                                    </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>About</label>
-                                            <textarea  class="form-control"  [ngClass]="{ 'is-invalid': submitted && fq.about.errors }" formControlName="about" required></textarea>
-                                            <!-- <input type="password"  class="form-control"  placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password" required> -->
-                                        </div>
-                                    </div> 
-                                          
-                                </div>
-                                <div class="text-center">
-                                    <button class="btn-cstm btn-blue">Submit</button>
-                                </div>
-                                 
-                                                  
-                                </form>
-                            </div>
-                            </div>
-                    </div>      
-                </div>
-            </section>
-            
-            
-
-
-
-
-            </div>
-          </ng-template>
-          <ng-template #confirm1>
-            <div class="modal-header">
-               <h4 class="modal-title pull-left">Login</h4>
-               <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
-               <span aria-hidden="true">&times;</span>
-               </button>
-            </div>
-            <div class="modal-body" >
-              <section class="login-from">
-                <div class="container">
-                    <div class="row mt-5  pb-3" >
-                        <div class="col-md-12 col-sm-12 mx-auto">
-                            <div class="form-wrapper login_wrapper">
-                                
-                              <div class="row">
-                                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6"> <a href="javascript::" (click)="socialLogin('facebook')" class="btn btn-primary facebook"> <span>Login with Facebook</span> <i class="fa fa-facebook" style="padding-left: 2px;"></i> </a> </div>
-                                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6"> <a href="javascript::" (click)="socialLogin('google')" class="btn btn-primary google-plus"> Login with Google <i class="fa fa-google-plus" style="padding-left: 2px;"></i> </a> </div>
-                            </div>
-          
-                           <p class="text-center">- OR -</p>
-                                <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="login()">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control"    placeholder="Email" formControlName="email" required>
-                                        </div>
-                                    </div>                                   
-                                    
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="password"  class="form-control"  placeholder="Password"  formControlName="password" required>
-                                        </div>
-                                    </div> 
-                                    <div class="col-md-6 col-sm-12">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"  formControlName = "rememberme"  name="remember"> Remember Me
-                                            </label>
-                                        </div>
-                                    </div> 
-                                    <div class="col-md-6 col-sm-12 forget-pswrd">
-                                        <label><a href="javascript::" (click)="register()">Signup Here</a></label>
-                                    </div>                     
-                                </div>
-                                <div class="text-center">
-                                    <button class="btn-cstm btn-blue">Login</button>
-                                </div>
-                                 
-                                                  
-                                </form>
-                            </div>
-                            </div>
-                    </div>      
-                </div>
-            </section>
-            
-            
-            
-          
-          
-          
-          
-            </div>
-          </ng-template>
+ 
+  

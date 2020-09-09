@@ -48,7 +48,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" placeholder="Phone number" formControlName="phone" required>
+                                    <input type="text" OnlyNumber="true" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" placeholder="Phone number" formControlName="phone" required>
                                 </div>
                             </div>
                                                               

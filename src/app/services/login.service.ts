@@ -84,6 +84,10 @@ export class LoginService {
   confirmAccount(id){
     return this.http.get(AppSettings.API_ENDPOINT  + 'confirm-account/'+id);
   }
+  cancelStatus(id,userID){
+    return this.http.get(AppSettings.API_ENDPOINT  + 'cancelStatus/'+id+'/'+userID);
+  }
+
 
   getToken() {
     return localStorage.getItem('token');
@@ -121,6 +125,9 @@ export class LoginService {
   registerUser(jsonPayload):Observable<any>{
     return this.http.post(AppSettings.API_ENDPOINT + 'register',jsonPayload,this.noAuthHeader);
   }
+  registerUserAdmin(jsonPayload):Observable<any>{
+    return this.http.post(AppSettings.API_ENDPOINT + 'registerUserAdmin',jsonPayload,this.noAuthHeader);
+  }
   becomePro(jsonPayload):Observable<any>{
     return this.http.post(AppSettings.API_ENDPOINT + 'becomePro',jsonPayload,this.noAuthHeader);
   }
@@ -140,8 +147,14 @@ export class LoginService {
   getsubcategoryDetails(id) {
     return this.http.get(AppSettings.API_ENDPOINT  + 'getsubcategoryDetails/'+id);
   }
+  getQuoteDetails(id) {
+    return this.http.get(AppSettings.API_ENDPOINT  + 'getQuoteDetails/'+id);
+  }
 
 
+  getListQuotes(id) {
+    return this.http.get(AppSettings.API_ENDPOINT  + 'getListQuotesUser/'+id);
+  }
   terms() {
     return this.http.get(AppSettings.API_ENDPOINT  + 'admin/terms');
   }
@@ -282,6 +295,9 @@ getBookingID(){
 }
 quoteJob(data){
   return this.http.post(AppSettings.API_ENDPOINT + 'quoteJob',data);
+}
+updateQuoteJob(data,id){
+  return this.http.post(AppSettings.API_ENDPOINT + 'updateQuoteJob/'+id,data);
 }
 validatePin(data){
   return this.http.post(AppSettings.API_ENDPOINT + 'validatePin',data);

@@ -13,9 +13,18 @@
                       <a class="nav-link "  [ngClass]="{'adminActive':selectedPage == 'users'}">
                         <i class="nav-icon icon-user"></i> Users</a>
                     </li>
-                    <li class="nav-item"  (click) = "redirectUrl('bookings')" style="cursor: pointer;">
+                     
+                    <li class="nav-item" (click) = "redirectUrl('admin-users')" style="cursor: pointer;">
+                      <a class="nav-link "  [ngClass]="{'adminActive':selectedPage == 'admin-users'}">
+                        <i class="nav-icon icon-user"></i>Admin Users</a>
+                    </li>
+                    <!-- <li class="nav-item"  (click) = "redirectUrl('bookings')" style="cursor: pointer;">
                       <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'bookings'}">
                         <i class="nav-icon icon-note"></i> Bookings</a>
+                    </li> -->
+                    <li class="nav-item"  (click) = "redirectUrl('quotes')" style="cursor: pointer;">
+                      <a class="nav-link"  [ngClass]="{'adminActive':selectedPage == 'quotes'}">
+                        <i class="nav-icon icon-note"></i> Quotes</a>
                     </li>
                     <li class="nav-item"  (click) = "redirectUrl('categories')" style="cursor: pointer;">
                         <a class="nav-link" [ngClass]="{'adminActive':selectedPage == 'categories'}">

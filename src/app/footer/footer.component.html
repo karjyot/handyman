@@ -28,9 +28,16 @@
       <!-- Content -->
       <h5 class="mt-2 mb-4">Address</h5>
       <p class="addr" *ngIf="home">{{home.dd2}}</p>
-    <p><a href="javascript:" *ngIf="home">{{home.dd1}}</a></p>
-    <p><a href="javascript:" *ngIf="home">{{home.contact}}</a></p>
-    
+      <p><a href="javascript:" *ngIf="home">{{home.dd1}}</a></p>
+      <p><a href="javascript:" *ngIf="home">{{home.contact}}</a></p>
+      <div class="social-icons">
+        <ul *ngIf="home">
+          <li><a href="{{home.facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i>
+          </a></li>
+          <li><a href="{{home.twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i>
+          </a></li>
+        </ul>
+      </div>
     </div>
     <!-- Grid column -->
     

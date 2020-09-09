@@ -70,6 +70,9 @@ import {
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BecomeProComponent } from './become-pro/become-pro.component';
 import { AdminPostalComponent } from './admin/admin-postal/admin-postal.component';
+import { AdminAdminUsersComponent } from './admin/admin-admin-users/admin-admin-users.component';
+import { AdminQuotesComponent } from './admin/admin-quotes/admin-quotes.component';
+import { EditQuoteComponent } from './edit-quote/edit-quote.component';
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
   bgsPosition: POSITION.bottomCenter,
@@ -125,7 +128,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SupportFeeComponent,
     NotFoundComponent,
     BecomeProComponent,
-    AdminPostalComponent
+    AdminPostalComponent,
+    AdminAdminUsersComponent,
+    AdminQuotesComponent,
+    EditQuoteComponent
     
   ],
   imports: [

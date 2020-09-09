@@ -43,6 +43,9 @@ import { SupportFeeComponent } from './admin/support-fee/support-fee.component';
 import { NotFoundComponent } from './not-found/not-found.component'
 import { BecomeProComponent } from './become-pro/become-pro.component';
 import { AdminPostalComponent } from './admin/admin-postal/admin-postal.component';
+import { AdminAdminUsersComponent } from './admin/admin-admin-users/admin-admin-users.component';
+import { AdminQuotesComponent } from './admin/admin-quotes/admin-quotes.component';
+import { EditQuoteComponent } from './edit-quote/edit-quote.component';
 const routes: Routes = [
   {  
     
@@ -68,8 +71,12 @@ const routes: Routes = [
     path: 'pro',
     component: BecomeProComponent
    },{
-    path: 'services/:id/:serviceId',
+    path: 'services/:id',
     component: ServiceComponent
+   },
+   {
+    path: 'edit-services/:id/:bookingID',
+    component: EditQuoteComponent
    },{
     path: 'services',
     component: HandymanServicesComponent
@@ -132,8 +139,20 @@ const routes: Routes = [
       pathMatch: 'full',
     },
     {
+      path: 'admin/quotes',
+      component: AdminQuotesComponent,
+      canActivate:[AuthGuardAdmin],
+      pathMatch: 'full',
+    },
+    {
       path: 'admin/support-fee',
       component: SupportFeeComponent,
+      canActivate:[AuthGuardAdmin],
+      pathMatch: 'full',
+    },
+    {
+      path: 'admin/admin-users',
+      component: AdminAdminUsersComponent,
       canActivate:[AuthGuardAdmin],
       pathMatch: 'full',
     },

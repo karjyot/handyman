@@ -12,18 +12,21 @@ import { forkJoin } from 'rxjs';
 
 import { SocialUser,SocialAuthService  } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+
 @Component({
-  selector: 'app-service',
-  templateUrl: './service.component.html',
-  styleUrls: ['./service.component.css']
+  selector: 'app-edit-quote',
+  templateUrl: './edit-quote.component.html',
+  styleUrls: ['./edit-quote.component.css']
 })
-export class ServiceComponent implements OnInit {
+export class EditQuoteComponent implements OnInit {
   bookingForm : FormGroup
   loginForm:FormGroup
   QuoteForm:FormGroup
   submitted = false
   subCategoryDetails:any;
   times:any;
+  bookingID:any
+  quoteDetails:any
   modal: BsModalRef | null;
   totalPrice:any
   supportFee:any
@@ -73,14 +76,24 @@ export class ServiceComponent implements OnInit {
     //  });
     let serviceName = this.activatedRoute.snapshot.paramMap.get('id').replace(/-/g, ' ');
     console.log(serviceName)
-    let id = this.activatedRoute.snapshot.paramMap.get('serviceId');
+    let id = this.activatedRoute.snapshot.paramMap.get('bookingID');
+    this.bookingID = id
      let q1 = this.adminService.getSupportFee();
      let q2 = this.loginService.getHomeContent();
      let q3 = this.loginService.getsubcategoryDetails(serviceName)
-     forkJoin([q1, q2, q3]).subscribe(data => {
+     let q4 = this.loginService.getQuoteDetails(id)
+     forkJoin([q1, q2, q3,q4]).subscribe(data => {
       let supportFee = data[0]['success'][0].fee;
       this.supportFee = data[0]['success'][0].fee;
       this.subCategoryDetails = data[2]['success'][0];
+      this.quoteDetails = data[3]['success'][0];
+      this.bookingForm.controls["zip"].setValue(this.quoteDetails.zip)
+      this.bookingForm.controls["date"].setValue(this.quoteDetails.date)
+      this.bookingForm.controls["about"].setValue(this.quoteDetails.about)
+      this.bookingForm.controls["phone"].setValue(this.quoteDetails.phone)
+      this.bookingForm.controls["hours"].setValue(this.quoteDetails.hours)
+      this.bookingForm.controls["time"].setValue(this.quoteDetails.time)
+    //  this.bookingForm.controls["hours"].setValue(2)
       let totalPrice = parseFloat(supportFee) + parseFloat(this.subCategoryDetails.price)
       this.totalPrice = totalPrice;
      
@@ -93,10 +106,11 @@ export class ServiceComponent implements OnInit {
 
 
    this.times =  this.listofTimes();
-    this.bookingForm.controls["hours"].setValue(2)
-    this.bookingForm.controls["time"].setValue("03:00PM")
+   
+  //  this.bookingForm.controls["time"].setValue("03:00PM")
     if(userDetails){
       this.bookingForm.controls["email"].setValue(userDetails.email)
+   
      
     }
 
@@ -108,16 +122,29 @@ export class ServiceComponent implements OnInit {
       this.toastr.error("Please enter the valid required fields.")
       return;
     }
+    this.ngxService.start()
     if(this.bookingForm.value.hours  == 2 || this.bookingForm.value.hours  == 3 || this.bookingForm.value.hours  == 4){
-      this.QuoteForm.controls["hours"].setValue(this.bookingForm.value.hours)
-      this.QuoteForm.controls["email"].setValue(this.bookingForm.value.email)
-      this.QuoteForm.controls["about"].setValue(this.bookingForm.value.about)
+      this.loginService.updateQuoteJob(this.bookingForm.value,this.bookingID).subscribe(
+            res => {
+           //  this.toastr.success("Your request sent successfully.");
+             this.router.navigateByUrl('/dashboard');
+             this.modal.hide();
+              this.ngxService.stop()
+            },
+            err => {  
+             // this.router.navigateByUrl('/error');
+              this.ngxService.stop()
+            }
+          );
+    //  this.QuoteForm.controls["hours"].setValue(this.bookingForm.value.hours)
+      //this.QuoteForm.controls["email"].setValue(this.bookingForm.value.email)
+      //this.QuoteForm.controls["about"].setValue(this.bookingForm.value.about)
      // this.QuoteForm.controls["phone"].setValue(" ")
-    if(!this.loginService.getUserDetails()){
-      this.modal= this.modalService.show(template1, Object.assign({}, ));
-      return
-    }
-      this.modal= this.modalService.show(template, Object.assign({}, ));
+    // if(!this.loginService.getUserDetails()){
+    //   this.modal= this.modalService.show(template1, Object.assign({}, ));
+    //   return
+    // }
+    //   this.modal= this.modalService.show(template, Object.assign({}, ));
     }else{
      // if(this.loginService.getUserDetails()){
        // this.bookingForm.value.date = this.bookingForm.value.date.toJSON().slice(0, 10);
@@ -152,31 +179,31 @@ export class ServiceComponent implements OnInit {
   get f() { return this.bookingForm.controls; }
   get fq() { return this.QuoteForm.controls; }
 
-  quote(){
+  // quote(){
    
-    if(!this.QuoteForm.valid){
+  //   if(!this.QuoteForm.valid){
 
-      return
-    }
-    this.ngxService.start()
-    this.QuoteForm.value.date = moment(this.bookingForm.value.date).format( 'YYYY-MM-DD' ) 
-    this.QuoteForm.value.time = this.bookingForm.value.time
-    this.QuoteForm.value.userID = this.loginService.getUserDetails().id
-    this.QuoteForm.value.job = this.loginService.getBookingDetails().name;
-    this.QuoteForm.value.zip = this.bookingForm.value.zip 
-    this.loginService.quoteJob(this.QuoteForm.value).subscribe(
-      res => {
-       this.toastr.success("Your request sent successfully.");
-       this.router.navigateByUrl('/dashboard');
-       this.modal.hide();
-        this.ngxService.stop()
-      },
-      err => {  
-       // this.router.navigateByUrl('/error');
-        this.ngxService.stop()
-      }
-    );
-  }
+  //     return
+  //   }
+  //   this.ngxService.start()
+  //   this.QuoteForm.value.date = moment(this.bookingForm.value.date).format( 'YYYY-MM-DD' ) 
+  //   this.QuoteForm.value.time = this.bookingForm.value.time
+  //   this.QuoteForm.value.userID = this.loginService.getUserDetails().id
+  //   this.QuoteForm.value.job = this.loginService.getBookingDetails().name;
+  //   this.QuoteForm.value.zip = this.bookingForm.value.zip 
+  //   this.loginService.quoteJob(this.QuoteForm.value).subscribe(
+  //     res => {
+  //      this.toastr.success("Your request sent successfully.");
+  //      this.router.navigateByUrl('/dashboard');
+  //      this.modal.hide();
+  //       this.ngxService.stop()
+  //     },
+  //     err => {  
+  //      // this.router.navigateByUrl('/error');
+  //       this.ngxService.stop()
+  //     }
+  //   );
+  // }
 
   validatePinCode(){
    // console.log({zip:this.QuoteForm.value.zip})
@@ -196,100 +223,6 @@ export class ServiceComponent implements OnInit {
   }
 
 
-  get fL() { return this.loginForm.controls; }
-  login(){
-    this.submitted = true;
-    this._cookieService.set('username',this.loginForm.get('email').value);
-    this._cookieService.set('password',this.loginForm.get('password').value);
-    this._cookieService.set('remember',this.loginForm.get('rememberme').value);
-    if (this.loginForm.invalid) {
-      this.toastr.error("Please fill the required information.")
-        return;
-    }
-    this.ngxService.start();
-    this.loginService.login(this.loginForm.value).subscribe((result) => {
-      this.loginService.setUserDetails(result['userData'])
-      this.loginService.setToken(result['token']);
-      this.ngxService.stop();
-      this.modal.hide();
-     // this.ngxService.stop();
-     }, (err) => {
-      this.toastr.error('Invalid username/password.');
-      this.ngxService.stop();
-     });
-   
-  } 
-  socialLogin(socialPlatform : string){
-    let socialPlatformProvider;
-    if(socialPlatform == "google"){
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID
-    }else if(socialPlatform == "facebook"){
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID
-    }
-
-  this.authService.signIn(socialPlatformProvider).then(
-      (userData) => {
-        console.log(userData)
-        let str = userData.name;
-        var res = str.split(" ");
-        var socialName = res[0];
-       
-        var name = socialName
-        var email = userData.email
-        var image = userData["photoUrl"]
-        var password = userData.id
-        let data = {"name":name,"email":email,"image":image,"password":password,"token":userData['token']}
-
-
-        this.ngxService.start();
-        this.loginService.registerSocial(data).subscribe(
-          res => {
-          if(res['success'] != 'firstTime'){
-            this.loginService.setUserDetails(res['userDetails'][0])
-            this.loginService.setToken(res['token']['token']);
-            //this.booking('')
-            this.modal.hide()
-            
-            this.ngxService.stop();
-          }else{
-            this.ngxService.start()      
-            this.loginService.firstTimeSocial(data).subscribe(
-              res => {
-              
-                this.loginService.setUserDetails(res['userDetails'][0])
-                this.loginService.setToken(res['token']['token']);
-              //  this.booking('')
-                this.modal.hide()
-              
-                this.ngxService.stop()         
-              },
-              err => {
-              console.log(err)
-              this.toastr.error('Network error occured.'); 
-              this.ngxService.stop();
-             
-              }
-            );
-            this.ngxService.stop();
-           
-          }
-                    
-          
-          },
-          err => {
-          console.log(err)
-          this.toastr.error('You already registerd with lvhslogistics.'); 
-          this.ngxService.stop();
-          }
-        );
-        
-      }
-    );
-  }
-
-  register(){
-    this.modal.hide()
-    this.router.navigateByUrl('/register')
-  }
+ 
   
 }

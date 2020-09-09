@@ -259,21 +259,21 @@
   <div class="col-md-4 col-sm-12 col-xs-12">
     <div class="work-div">
       <div class="number"><h5>1</h5></div>
-      <h3> {{home.worksTitle1}}</h3>
+      <h3  *ngIf="home"> {{home.worksTitle1}}</h3>
       <p  *ngIf="home">{{home.signin}}</p>
     </div>
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12">
     <div class="work-div">
       <div class="number"><h5>2</h5></div>
-      <h3>{{home.worksTitle2}}</h3>
+      <h3  *ngIf="home">{{home.worksTitle2}}</h3>
       <p  *ngIf="home">{{home.choose}}</p>
     </div>
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12">
     <div class="work-div">
       <div class="number"><h5>3</h5></div>
-      <h3>{{home.worksTitle3}}</h3>
+      <h3  *ngIf="home">{{home.worksTitle3}}</h3>
       <p  *ngIf="home">{{home.submit}}</p>
     </div>
   </div>

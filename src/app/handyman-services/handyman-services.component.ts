@@ -124,7 +124,7 @@ export class HandymanServicesComponent implements OnInit {
     }else{
      this.loginService.setBookingDetails(this.selectedService)
      let name = this.selectedService.name.replace(/\s+/g, '-').toLowerCase();
-     this.router.navigateByUrl('/services/'+name+'/'+this.selectedService.id)
+     this.router.navigateByUrl('/services/'+name)
     }
   }
   scroll(id) {
@@ -147,7 +147,7 @@ export class HandymanServicesComponent implements OnInit {
     }
     this.loginService.setBookingDetails(this.selectedService)
     let name = this.selectedService.name.replace(/\s+/g, '-').toLowerCase();
-    this.router.navigateByUrl('/services/'+name+'/'+this.selectedService.id)
+    this.router.navigateByUrl('/services/'+name)
    
   }
 
